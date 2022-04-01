@@ -168,4 +168,15 @@ class Main {
 ```
 
 **Note**
- == checks if both objects point to the same memory location whereas .equals() evaluates to the comparison of values in the objects.
+
+== checks if both objects point to the same memory location whereas .equals() evaluates to the comparison of values in the objects.
+
+
+##  == and .equals()
+- The main difference between the .equals() method and == operator is that one is a method, and the other is the operator.
+- We can use == operators for reference comparison (address comparison) and .equals() method for content comparison. In simple words, == checks if both objects point to the same memory location whereas .equals() evaluates to the comparison of values in the objects.
+- If a class does not override the equals method, then by default, it uses the equals(Object o) method of the closest parent class that has overridden this method. 
+
+### equals() and hashCode() methods
+
+
