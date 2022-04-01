@@ -179,4 +179,7 @@ class Main {
 
 ### equals() and hashCode() methods
 
+In java equals() method is used to compare equality of two Objects. The equality can be compared in two ways:
 
+- Shallow comparison: The default implementation of equals method is defined in Java.lang.Object class which simply checks if two Object references (say x and y) refer to the same Object. i.e. It checks if x == y. Since Object class has no data members that define its state, it is also known as shallow comparison.
+- Deep Comparison: Suppose a class provides its own implementation of equals() method in order to compare the Objects of that class w.r.t state of the Objects. That means data members (i.e. fields) of Objects are to be compared with one another. Such Comparison based on data members is known as deep comparison.
