@@ -5,6 +5,147 @@
 14. Exception
 
 
-## Keyword
-### Data type keyword
+## 12. Keyword
+### 12.1 Data type keyword
+1.  **boolean**: boolean data type represents only one bit of information either true or false, but the size of the boolean data type is virtual machine-dependent. The default value is false.
+2.  **byte**: The byte data type is an 8-bit signed two’s complement integer. The value ranges from -128 to 127. The default value is 0.
+3.  **short**: The short data type is a 16-bit signed two’s complement integer. The value ranges from -32,768 to 32,7677. The default value is 0.
+4.  **int**: It is a 32-bit signed two’s complement integer. The value ranges from -2,147,483,648 to 2,147,483,647. The default value is 0. ***Note***: In Java SE 8 and later, we can use the int data type to represent an unsigned 32-bit integer, which has a value in the range [0, 2^32-1]. Use the Integer class to use the int data type as an unsigned integer. 
+5.  **long**: The long data type is a 64-bit two’s complement integer. The value ranges from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. ***Note***: Note: In Java SE 8 and later, you can use the long data type to represent an unsigned 64-bit long, which has a minimum value of 0 and a maximum value of 264-1. The Long class also contains methods like comparing Unsigned, divide Unsigned, etc to support arithmetic operations for unsigned long. 
+6.  **float**: The float data type is a single-precision 32-bit IEEE 754 floating-point. Use a float (instead of double) if you need to save memory in large arrays of floating-point numbers.
+7.  **double**: The double data type is a double-precision 64-bit IEEE 754 floating-point. For decimal values, this data type is generally the default choice.
+8.  **char**: The char data type is a single 16-bit Unicode character. 
 
+### 12.2 Flow control keyword
+Control flow or flow of control is the order in which instructions, statements and function calls being executed or evaluated when a program is running. We can classify the types of control flow statements as follows:
+
+- Decision Making Statements
+- Loop Statements
+- Jump Statements
+
+#### 12.2.1 Decision Making ####
+We generally use decision-making keywords when we have to decide which block of the code will be executed.
+There are three types of decision-making statements:
+
+- if statement
+- if-else statement
+- The switch statement
+
+**if** statement is the most basic decision-making statement in the java programming language. There are two possible values of the condition, i.e. true and false.
+The code block after the if statement will execute only if the value of the condition statement is true. If the value of the condition statement is false, the code block will not be executed.
+
+**if-else** statement is somewhat similar to the if statement, we are just adding an extra block of the code after the if statement.
+If the value of the condition statement is true, the if block will be executed, else the else block will be executed.
+
+**Switch** statement contains multiple blocks of code called cases and a single case is executed based on the variable which is being switched. The switch statement is easier to use instead of if-else-if statements. It also enhances the readability of the program. **Note**: 1) The case variables can be int, short, byte, char, or enumeration. 2) Cases cannot be duplicate. 3) **Break** statement terminates the switch block when the condition is satisfied. It is optional, if not used, next case is executed.
+
+#### 12.2.2 Loop ####
+In programming, sometimes we need to execute the block of code repeatedly while some condition evaluates to true. However, loop statements are used to execute the set of instructions in a repeated order. The execution of the set of instructions depends upon a particular condition.
+
+In Java, we have three types of loops that execute similarly. However, there are differences in their syntax and condition checking time:
+- for loop
+- while loop
+- do-while loop
+
+**for** enables us to initialize the loop variable, check the condition, and increment/decrement in a single line of code. We use the for loop only when we exactly know the number of times, we want to execute the block of code.
+
+**while** loop is also used to iterate over the number of statements multiple times. However, if we don't know the number of iterations in advance, it is recommended to use a while loop. Unlike for loop, the initialization and increment/decrement doesn't take place inside the loop statement in while loop. It is also known as the entry-controlled loop since the condition is checked at the start of the loop. If the condition is true, then the loop body will be executed; otherwise, the statements after the loop will be executed.
+
+**do-while** loop checks the condition at the end of the loop after executing the loop statements. When the number of iteration is not known and we have to execute the loop at least once, we can use do-while loop. It is also known as the exit-controlled loop since the condition is not checked in advance. The syntax of the do-while loop is given below.
+
+#### 12.2.3 Jump ####
+Jump statements are used to transfer the control of the program to the specific statements. In other words, jump statements transfer the execution control to the other part of the program. There are two types of jump statements in Java, i.e., break and continue.
+
+**break** statement is used to break the current flow of the program and transfer the control to the next statement outside a loop or switch statement. However, it breaks only the inner loop in the case of the nested loop. 
+The break statement cannot be used independently in the Java program, i.e., it can only be written inside the loop or switch statement.
+
+**continue** statement doesn't break the loop, whereas, it skips the specific part of the loop and jumps to the next iteration of the loop immediately.
+
+**default**: The default access modifier is accessible within the package only.
+
+**return**: The return keyword finished the execution of a method, and can be used to return a value from a method.
+
+### 12.3 Modifier keyword
+#### 12.3.1 Access modifier keyword
+As the name suggests access modifiers in Java helps to restrict the scope of a class, constructor, variable, method, or data member. There are four types of access modifiers available in java: 
+
+- Default – No keyword required
+- Private
+- Protected
+- Public
+
+**Default**: When no access modifier is specified for a class, method, or data member – It is said to be having the default access modifier by default. 
+The data members, class or methods which are not declared using any access modifiers i.e. having default access modifier are accessible only within the same package.
+
+**Private**: The private access modifier is specified using the keyword private. The methods or data members declared as private are accessible only within the class in which they are declared. Any other class of the same package will not be able to access these members. Top-level classes or interfaces can not be declared as private because private means “only visible within the enclosing class”; protected means “only visible within the enclosing class and any subclasses”
+
+**protected**: The protected access modifier is specified using the keyword protected.
+The methods or data members declared as protected are accessible within the same package or subclasses in different packages.
+
+**public**: The public access modifier is specified using the keyword public. The public access modifier has the widest scope among all other access modifiers.
+Classes, methods, or data members that are declared as public are accessible from everywhere in the program. There is no restriction on the scope of public data members.
+
+#### 12.3.2 No-Access modifier keyword
+Non-access modifiers provide information about the characteristics of a class, method, or variable to the JVM. Seven types of Non-Access modifiers are present in Java. They are:
+
+- static
+- final
+- abstract
+- synchronized
+- volatile
+- transient
+- native
+
+**static** keyword means that the entity to which it is applied is available outside any particular instance of the class. That means the static methods or the attributes are a part of the class and not an object. The memory is allocated to such an attribute or method at the time of class loading. The use of a static modifier makes the program more efficient by saving memory. A static field exists across all the class instances, and without creating an object of the class, they can be called.
+
+**final** keyword indicates that the specific class cannot be extended or a method cannot be overridden.
+
+**abstract** keyword is used to declare a class as partially implemented means an object cannot be created directly from that class. Any subclass needs to be either implement all the methods of the abstract class, or it should also need to be an abstract class. The abstract keyword cannot be used with static, final, or private keywords because they prevent overriding, and we need to override methods in the case of an abstract class.
+
+**synchronized** keyword prevents a block of code from executing by multiple threads at once. It is very important for some critical operations.
+
+**volatile** keyword is used to make the class thread-safe. That means if a variable is declared as volatile, then that can be modified by multiple threads at the same time without any issues. The volatile keyword is only applicable to a variable. A volatile keyword reduces the chance of memory inconsistency. The value of a volatile variable is always read from the main memory and not from the local thread cache, and it helps to improve thread performance.
+
+**transient** keyword may be applied to member variables of a class to indicate that the member variable should not be serialized when the containing class instance is serialized. Serialization is the process of converting an object into a byte stream. When we do not want to serialize the value of a variable, then we declare it as transient. 
+
+**native** keyword may be applied to a method to indicate that the method is implemented in a language other than Java. Using this java application can call code written in C, C++, or assembler language. A shared code library or DLL is required in this case.
+
+### 12.4 Exception Handling
+**What is an Exception?**
+
+An exception is an unwanted or unexpected event, which occurs during the execution of a program i.e at run time, that disrupts the normal flow of the program’s instructions. Exceptions can be caught and handled by the program. When an exception occurs within a method, it creates an object. This object is called the exception object. It contains information about the exception such as the name and description of the exception and the state of the program when the exception occurred.
+
+Java provides five keywords that are used to handle the exception. 
+
+**try** keyword is used to specify a block where we should place an exception code. It means we can't use try block alone. The try block must be followed by either catch or finally.
+
+**catch** keyword is used to handle the exception. It must be preceded by try block which means we can't use catch block alone. It can be followed by finally block later.
+
+**finally** block is used to execute the necessary code of the program. It is executed whether an exception is handled or not.
+
+**throw** keyword is used within a method body, or any block of code, and is used to explicitly throw a single exception. The throw keyword can be useful for throwing exceptions based on certain conditions within a code block and for throwing custom exceptions.
+
+**throws** keyword is used to declare exceptions. It specifies that there may occur an exception in the method. It doesn't throw an exception. It is always used with method signature.
+
+### 12.5 Class Related Keyword
+**class** keyword is the most common keyword which is used to declare a new Java class. A class is a container that contains the block of code that includes field, method, constructor, etc. A class is a template or blueprint from which objects are created. It is a logical entity. It can't be physical.
+
+**package** keyword creates a package. A package in Java is used to group related classes. Think of it as a folder in a file directory. We use packages to avoid name conflicts, and to write a better maintainable code. Packages are divided into two categories: Built-in Packages (packages from the Java API) and User-defined Packages (create your own packages)
+
+**import** is a Java keyword. It declares a Java class to use in the code below the import statement. Once a Java class is declared, then the class name can be used in the code without specifying the package the class belongs to. Use the '*' character to declare all the classes belonging to the package.
+
+**extends** keyword is used to indicate that the class which is being defined is derived from the base class using inheritance. So basically, extends keyword is used to extend the functionality of the parent class to the subclass. In Java, multiple inheritances are not allowed due to ambiguity.
+
+**implements** keyword is used to implement an interface. An interface is a special type of class which implements a complete abstraction and only contains abstract methods. To access the interface methods, the interface must be “implemented” by another class with the implements keyword and the methods need to be implemented in the class which is inheriting the properties of the interface. Since an interface is not having the implementation of the methods, a class can implement any number of interfaces at a time.
+
+**interface** in Java programming language is defined as an abstract type used to specify the behavior of a class. An interface in Java is a blueprint of a class. A Java interface contains static constants and abstract methods.
+
+### 12.6 Object Related Keyword
+**new** operator is used in Java to create new objects. It can also be used to create an array object. Declaration − A variable declaration with a variable name with an object type. Instantiation − The 'new' keyword is used to create the object.
+
+**instanceof** keyword checks whether an object is an instance of a specific class or an interface. The instanceof keyword compares the instance with type. The return value is either true or false.
+
+**super** keyword refers to superclass (parent) objects. It is used to call superclass methods, and to access the superclass constructor.
+The most common use of the super keyword is to eliminate the confusion between superclasses and subclasses that have methods with the same name.
+
+**this** keyword refers to the current object in a method or constructor. The most common use of the this keyword is to eliminate the confusion between class attributes and parameters with the same name (because a class attribute is shadowed by a method or constructor parameter).
