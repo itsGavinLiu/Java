@@ -135,19 +135,25 @@ class Main {
 }
 ```
 
+##  == and .equals()
+- The main difference between the .equals() method and == operator is that one is a method, and the other is the operator.
+- We can use == operators for reference comparison (address comparison) and .equals() method for content comparison. In simple words, == checks if both objects point to the same memory location whereas .equals() evaluates to the comparison of values in the objects.
+- If a class does not override the equals method, then by default, it uses the equals(Object o) method of the closest parent class that has overridden this method. 
+
 ## String Constant Pool 
 String is a sequence of characters. One of the most important characteristics of a string in Java is that they are immutable. This immutability is achieved through the use of a special string constant pool in the heap.
 
 A string constant pool is a separate place in the heap memory where the values of all the strings which are defined in the program are stored. When we declare a string, an object of type String is created in the stack, while an instance with the value of the string is created in the heap. On standard assignment of a value to a string variable, the variable is allocated stack, while the value is stored in the heap in the string constant pool. 
 
 let’s take an example with multiple string variables having the same value. 
-```
+```java
 String str1 = "Hello";
 String str2 = "Hello";
 ```
 In this case, both the string objects get created in the stack, but only one instance of the value “Hello” is created in the heap. The string constant pool is a small cache that resides within the heap. Java stores all the values inside the string constant pool on direct allocation. This way, if a similar value needs to be accessed again, a new string object created in the stack can reference it directly with the help of a pointer. In other words, the string constant pool exists mainly to reduce memory usage and improve the re-use of existing instances in memory.
 
-One way to skip this memory allocation is to use the **new** keyword while creating a new string object. The ‘new’ keyword forces a new instance to always be created regardless of whether the same value was used previously or not. Using ‘new’ forces the instance to be created in the heap ***outside*** the string constant pool.
+One way to skip this memory allocation is to use the **new** keyword while creating a new string object. The ‘new’ keyword ***forces a new instance*** to always be created regardless of whether the same value was used previously or not. Using ‘new’ forces the instance to be created in the heap ***outside*** the string constant pool.
+
 
 Example of String Constant pool
 ```java
@@ -160,8 +166,6 @@ class Main {
   
          System.out.println(s1 == s2); // true
          System.out.println(s1 == s3); // false
-         System.out.println(s1.equals(s2)); // true
-         System.out.println(s1.equals(s3)); // true
     }
 }
 
@@ -169,13 +173,10 @@ class Main {
 
 **Note**
 
-== checks if both objects point to the same memory location whereas .equals() evaluates to the comparison of values in the objects.
+== checks if both objects point to the same memory location.
 
 
-##  == and .equals()
-- The main difference between the .equals() method and == operator is that one is a method, and the other is the operator.
-- We can use == operators for reference comparison (address comparison) and .equals() method for content comparison. In simple words, == checks if both objects point to the same memory location whereas .equals() evaluates to the comparison of values in the objects.
-- If a class does not override the equals method, then by default, it uses the equals(Object o) method of the closest parent class that has overridden this method. 
+
 
 ### equals() and hashCode() methods
 
