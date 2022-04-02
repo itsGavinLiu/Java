@@ -257,7 +257,7 @@ public class Person {
       Person person2 = new Person("Mike", 34);
       System.out.println (person1.equals(person2));  --> will print false!
       
-      }
+}
 
 ```
 
