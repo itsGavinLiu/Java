@@ -236,9 +236,84 @@ public class Difference {
 ```
 
 
-### equals() and hashCode() methods
+## 6. equals() and hashCode() methods
 
 In java equals() method is used to compare equality of two Objects. The equality can be compared in two ways:
 
 - Shallow comparison: The default implementation of equals method is defined in Java.lang.Object class which simply checks if two Object references (say x and y) refer to the same Object. i.e. It checks if x == y. Since Object class has no data members that define its state, it is also known as shallow comparison.
 - Deep Comparison: Suppose a class provides its own implementation of equals() method in order to compare the Objects of that class w.r.t state of the Objects. That means data members (i.e. fields) of Objects are to be compared with one another. Such Comparison based on data members is known as deep comparison.
+
+Let's look at the following example.
+```java
+public class Person {
+
+      private Integer age;
+      private String name;
+    
+      ..getters, setters, constructors
+      
+      
+      Person person1 = new Person("Mike", 34);
+      Person person2 = new Person("Mike", 34);
+      System.out.println (person1.equals(person2));  --> will print false!
+      
+      }
+
+```
+
+
+Two Person objects are created. Both objects have same age & name as below. but when I do equality check it returns false.
+
+To understand it, we have to understand how equals() is defined from java docs. The default implementation provided by the JDK is based on memory location — two objects are equal if and only if they are stored in the same memory address.
+
+The default implementation is not enough to satisfy business needs, especially if we’re talking about a huge application that considers two objects as equal when some business fact happens. Therefore, it needs to be **overridden** if we want to check the objects based on the property.
+
+For example, You can select which fields you want to be compared. If we say that 2 Person objects will be the same if and only if they have the same age and same name, then the IDE will create something like the following for automatic generation of equals(). 
+```java
+@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return age == person.age &&
+                name.equals(person.name);
+    }
+```
+
+However, why do we need to override hashCode() method?
+
+Some Data Structures in java like HashSet, HashMap store their elements based on a hash function which is applied on those elements. The hashing function is the hashCode(). If we have a choice of overriding .equals() method then we must also have a choice of overriding hashCode() method because default implementation of hashCode() which is inherited from Object considers all objects in memory unique!
+
+Hashing retrieval is a two-step process:
+- Find the right bucket (using hashCode())
+- Search the bucket for the right element (using equals())
+
+
+Why if two objects are considered equal, their hashcodes must also be equal? Otherwise, you'd never be able to find the object since the default hashcode method in class Object virtually always comes up with a unique number for each object, even if the equals() method is overridden in such a way that two or more objects are considered equal. It doesn't matter how equal the objects are if their hashcodes don't reflect that. 
+
+```java
+ public class Person {
+
+      private Integer age;
+      private String name;
+    
+      ..getters, setters, constructors
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return age == person.age &&
+                name.equals(person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
+    }
+
+}
+```    
+In conclusion, Joshua Bloch says on Effective Java:
+> You must override hashCode() in every class that overrides equals(). Failure to do so will result in a violation of the general contract for Object.hashCode(), which will prevent your class from functioning properly in conjunction with all hash-based collections, including HashMap, HashSet, and Hashtable.
