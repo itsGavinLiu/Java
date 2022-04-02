@@ -9,21 +9,21 @@
 6. equals() and hashCode()
 
 
-## Introduction of Maven
+## 1. Introduction of Maven
 
-### What is Maven?
+### 1.1 What is Maven?
 Maven is a popular open-source build tool developed by the Apache Group to build, publish, and deploy several projects at once for better project management. The tool provides allows developers to build and document the lifecycle framework. 
 Maven is written in Java and is used to build projects written in C#, Scala, Ruby, etc. Based on the Project Object Model (POM), this tool has made the lives of Java developers easier while developing reports, checks build and testing automation setups. 
-### Objective
+### 1.2 Objective
 Maven’s purpose is to provide developers with:
 - A comprehensive, maintainable, reusable, and simple model for projects.
 - A set of tools and plug-ins that can interact with the declarative model.
-### Project Object Model (POM)
+### 1.3 Project Object Model (POM)
 Maven is so useful thanks to the Project Object Model (POM), which is an XML file that has all the information regarding project and configuration details. The POM has the description of the project, details regarding the versioning, and configuration management of the project. The XML file is located in the project home directory. When you execute a task, Maven searches for the POM in the current directory.
-### The Need for Maven
+### 1.4 The Need for Maven
 Maven is chiefly used for Java-based projects, helping to download dependencies, which refers to the libraries or JAR files. The tool helps get the right 
 JAR files for each project as there may be different versions of separate packages. After Maven, downloading dependencies doesn’t require visiting the official websites of different software. You can visit mvnrepository to find libraries in different languages. The tool also helps to create the right project structure in struts, servlets, etc., which is essential for execution.
-### What is a Maven Repository?
+### 1.5 What is a Maven Repository?
 Maven repositories refer to the directories of packaged JAR files that contain metadata. The metadata refers to the POM files relevant to each project. This metadata is what allows Maven to download dependencies.
 
 There are three types of repositories:
@@ -42,8 +42,8 @@ For example, the default lifecycle comprises of the following phases:
 - *Install*: install the package into the local repository, for use as a dependency in other projects locally
 - *Deploy*: done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
 
-## Eight Basic Datatypes
-### 8 primitive data types
+## 3. Eight Basic Datatypes
+### 3.1 8 Primitive Data Types
 1.  **boolean**: boolean data type represents only one bit of information either true or false, but the size of the boolean data type is virtual machine-dependent. The default value is false.
 2.  **byte**: The byte data type is an 8-bit signed two’s complement integer. The value ranges from -128 to 127. The default value is 0.
 3.  **short**: The short data type is a 16-bit signed two’s complement integer. The value ranges from -32,768 to 32,7677. The default value is 0.
@@ -53,10 +53,10 @@ For example, the default lifecycle comprises of the following phases:
 7.  **double**: The double data type is a double-precision 64-bit IEEE 754 floating-point. For decimal values, this data type is generally the default choice.
 8.  **char**: The char data type is a single 16-bit Unicode character. 
 
-### Wrapper Classes
+### 3.2 Wrapper Classes
 A Wrapper class is a class whose object wraps or contains primitive data types. When we create an object to a wrapper class, it contains a field and in this field, we can store primitive data types. In other words, we can wrap a primitive value into a wrapper class object. Objects are needed if we wish to modify the arguments passed into a method (because primitive types are passed by value).
 
-### Autoboxing & Unboxing
+### 3.3 Autoboxing & Unboxing
 - Autoboxing: Automatic conversion of primitive types to the object of their corresponding wrapper classes is known as autoboxing.
 - Unboxing: It is just the reverse process of autoboxing. Automatically converting an object of a wrapper class to its corresponding primitive type is known as unboxing. 
 
@@ -89,7 +89,7 @@ class UnboxingExample {
 ```
 
 
-## String & StringBuilder & StringBuffer
+## 4. String & StringBuilder & StringBuffer
 In java, objects of String are immutable which means a constant and cannot be changed once created. 
 
 **Note**
@@ -135,12 +135,18 @@ class Main {
 }
 ```
 
-##  == and .equals()
-- The main difference between the .equals() method and == operator is that one is a method, and the other is the operator.
-- We can use == operators for reference comparison (address comparison) and .equals() method for content comparison. In simple words, == checks if both objects point to the same memory location whereas .equals() evaluates to the comparison of values in the objects.
-- If a class does not override the equals method, then by default, it uses the equals(Object o) method of the closest parent class that has overridden this method. 
 
-## String Constant Pool 
+## 5. String/Integer Constant Pool 
+When it comes time to execute a specific class, the JVM locates the class file and loads it. The loading process involves parsing the file into its various fields and then placing the parsed data in a convenient format into the JVM’s method area. This is an area shared across threads where variables and methods, among other items, can be looked up. 
+
+The class file consists of a file header, some bytes identifying the Java version that generated the class file, a significant area called the constant pool (which I discuss shortly), additional data fields, the methods, and finally a series of attributes.
+
+One of the most important sections of a class file is the constant pool, which is a collection of entries that serve as a symbol table of sorts for the class. The constant pool contains the names of classes that are referenced, initial values of strings and numeric constants, and other miscellaneous data crucial to proper execution.
+
+For each type it loads, a Java virtual machine must store a constant pool. A constant pool is an ordered set of constants used by the type, including literals (string, integer, and floating point constants) and symbolic references to types, fields, and methods. Entries in the constant pool are referenced by index, much like the elements of an array. Because it holds symbolic references to all types, fields, and methods used by a type, the constant pool plays a central role in the dynamic linking of Java programs
+
+
+### 5.2 String Constant Pool
 String is a sequence of characters. One of the most important characteristics of a string in Java is that they are immutable. This immutability is achieved through the use of a special string constant pool in the heap.
 
 A string constant pool is a separate place in the heap memory where the values of all the strings which are defined in the program are stored. When we declare a string, an object of type String is created in the stack, while an instance with the value of the string is created in the heap. On standard assignment of a value to a string variable, the variable is allocated stack, while the value is stored in the heap in the string constant pool. 
@@ -175,8 +181,35 @@ class Main {
 
 == checks if both objects point to the same memory location.
 
+### 5.3 Integer Constant Pool
 
-### == vs equals()
+Java caches the integer objects in the range -128 to 127. So, when you try to assign a value in this range to a wrapper object, the boxing operation will invoke Integer.valueOf method and in turn it will assign a reference to the object already in the pool.
+
+On the other hand, if you assign a value outside this range to a wrapper reference type, Integer.valueOf will create a new Integer object for that value. And hence, comparing the reference for Integer objects having value outside this range will give you false.
+
+So,
+```java
+Integer i = 127;  --> // Equivalent to `Integer.valueOf(127)`
+Integer i2 = 127;
+
+// Equivalent to `Integer.valueOf(128)`
+// returns `new Integer(128)` for value outside the `Range - [-128, 127]`
+Integer i3 = 128; 
+Integer i4 = 128;
+
+System.out.println(i == i2); // true, reference pointing to same literal
+System.out.println(i3 == i4); // false, reference pointing to different objects
+```
+
+when you create your integer instances using new operator, a new object will be created on Heap. 
+```java
+Integer i = new Integer(127);
+Integer i2 = new Integer(127);
+
+System.out.println(i == i2); // false
+```
+
+### 5.4 == vs equals()
 
 - The main difference between the .equals() method and == operator is that one is a method, and the other is the operator.
 - We can use == operators for reference comparison (address comparison) and .equals() method for content comparison. In simple words, == checks if both objects point to the ***same memory location*** whereas .equals() evaluates to the comparison of ***values*** in the objects.
