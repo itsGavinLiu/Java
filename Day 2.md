@@ -306,7 +306,44 @@ There are many garbage collection algorithms that run in the background, of whic
 - Sweep phase
 
 #### 10.2.1 Mark Phase
+When an object is created, its mark bit is set to 0(false). In the Mark phase, we set the marked bit for all the reachable objects (or the objects which a user can refer to) to 1(true). Now to perform this operation we simply need to do a graph traversal, a depth-first search approach would work for us. Here we can consider every object as a node and then all the nodes (objects) that are reachable from this node (object) are visited and it goes on till we have visited all the reachable nodes.
 
+Algorithm
+```java
+Mark(root):
+    if !markedBit(root):
+        markedBit(root) = true
+        for node in root:
+            Mark(node)
+```
 
 #### 10.2.2 Sweep Phase
+As the name suggests it “sweeps” the unreachable objects i.e. it clears the heap memory for all the unreachable objects. All those objects whose marked value is set to false are cleared from the heap memory, for all other objects (reachable objects) the marked bit is set to true. 
+Now the mark value for all the reachable objects is set to false since we will run the algorithm (if required) and again we will go through the mark phase to mark all the reachable objects. 
+
+Algorithm
+```java
+Sweep():
+    for obj in heap:
+        if markedBit(obj):
+            markedBit(obj) = false
+        else:
+            heap.release(obj)
+```
+The mark-and-sweep algorithm is called a tracing garbage collector because it traces out the entire collection of objects that are directly or indirectly accessible by the program. 
+
+
+Advantages of Mark and Sweep Algorithm are as follows: 
+
+- It handles the case with cyclic references, even in the case of a cycle, this algorithm never ends up in an infinite loop.
+- There are no additional overheads incurred during the execution of the algorithm.
+
+Disadvantages of the Mark and Sweep Algorithm are as follows:
+
+- The main disadvantage of the mark-and-sweep approach is the fact that that normal program execution is suspended while the garbage collection algorithm runs.
+- Another disadvantage is that, after the Mark and Sweep Algorithm is run several times on a program, reachable objects end up being separated by many, small unused memory regions. Look at the below figure for a better understanding. 
+
+
+## 10.3 Garbage Implementation
+
 
