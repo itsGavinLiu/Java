@@ -20,4 +20,14 @@ Key Concepts:
 - Class: A class is a user-defined blueprint or prototype from which objects are created. It represents the set of properties or methods that are common to all objects of one type.
 - Interface: Like a class, an interface can have methods and variables, but the methods declared in an interface are by default abstract (only method signature, no body). Interfaces specify what a class must do and not how. It is the blueprint of the class.
 
-![image](https://user-images.githubusercontent.com/40971097/161405016-7ade865c-08b0-47cd-ba54-58f9233b9132.png)
+The following figure illustrates the hierarchy of the collection framework. 
+
+![image](https://user-images.githubusercontent.com/40971097/161405348-e7e1531d-d100-4658-a77c-53c3742b5a2a.png)
+
+#### 7.2.1 Methods of the Collection Interface
+- `size()` - returns the current number of elements in the collection
+- `isEmpty()` - returns true if there's no element in the collection, otherwise false
+- `contains()` - returns true if the collection contains an element passed as a parameter
+- `add()` - adds a new element to the collection; returns true if the collection changed (element was added), otherwise false
+- `remove()` - removes element from the collection; returns true if collection changed (the element existed and has been removed), otherwise false
+- `clear()` - clears the collection contents
