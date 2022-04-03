@@ -107,7 +107,6 @@ The following are the classes that implement the Set interface:
 This interface is very similar to the set interface. The only difference is that this interface has extra methods that maintain the ordering of the elements. The sorted set interface extends the set interface and is used to handle the data which needs to be sorted. The class which implements this interface is TreeSet. Since this class implements the SortedSet, we can instantiate a SortedSet object with this class. For example,
 ```java
 SortedSet<T>ts = new TreeSet<>(); 
-
 # T is the type of the object.  
 ```
 The class which implements the sorted set interface is TreeSet. 
@@ -198,3 +197,116 @@ It is a collection of the Native Libraries(C, C++) which are required by the Exe
 
 
 ## 10. Garbage Collector 
+
+Garbage collection (GC), as its name implies, is a means of freeing space occupied by waste materials, or garbage, and avoid memory leaks. Through performing the GC mechanism, available memory can be effectively used. Moreover, through this process, objects that are dead or unused for a long time in the memory heap will be deleted and the memory space used by these objects will be reclaimed.
+
+### 10.1 Key Concepts
+#### 10.1.1 Unreachable objects
+An object is said to be unreachable if it doesn’t contain any reference to it. Also, note that objects which are part of the island of isolation are also unreachable. 
+
+#### 10.1.2 Eligibility for garbage collection
+Even though the programmer is not responsible for destroying useless objects but it is highly recommended to make an object unreachable(thus eligible for GC) if it is no longer required.
+There are generally four ways to make an object eligible for garbage collection.
+- Nullifying the reference variable
+- Re-assigning the reference variable
+- An object created inside the method
+- Island of Isolation
+
+#### 10.1.3 Finalization
+Just before destroying an object, Garbage Collector calls `finalize()` method on the object to perform cleanup activities. Once finalize() method completes, Garbage Collector destroys that object.
+
+`finalize()` method is present in Object class with the following prototype.
+```java
+protected void finalize() throws Throwable
+```
+Based on our requirement, we can override `finalize()` method for performing our cleanup activities like closing connection from the database. 
+
+- The `finalize()` method is called by Garbage Collector, not JVM. However, Garbage Collector is one of the modules of JVM.
+- Object class `finalize()` method has an empty implementation. Thus, it is recommended to override the `finalize()` method to dispose of system resources or perform other cleanups.
+- The `finalize()` method is never invoked more than once for any object.
+- If an uncaught exception is thrown by the `finalize()` method, the exception is ignored, and the finalization of that object terminates.
+
+Example:  count the number of employees working in the company(excluding interns) using garbage collector.
+```java
+// Correct code to count number
+// of employees excluding interns.
+
+class Employee {
+
+	private int ID;
+	private String name;
+	private int age;
+	private static int nextId = 1;
+
+	// it is made static because it
+	// is keep common among all and
+	// shared by all objects
+	public Employee(String name, int age)
+	{
+		this.name = name;
+		this.age = age;
+		this.ID = nextId++;
+	}
+	public void show()
+	{
+		System.out.println("Id=" + ID + "\nName=" + name
+						+ "\nAge=" + age);
+	}
+	public void showNextId()
+	{
+		System.out.println("Next employee id will be="
+						+ nextId);
+	}
+	protected void finalize()
+	{
+		--nextId;
+		// In this case,
+		// gc will call finalize()
+		// for 2 times for 2 objects.
+	}
+}
+
+public class UseEmployee {
+	public static void main(String[] args)
+	{
+		Employee E = new Employee("GFG1", 56);
+		Employee F = new Employee("GFG2", 45);
+		Employee G = new Employee("GFG3", 25);
+		E.show();
+		F.show();
+		G.show();
+		E.showNextId();
+		F.showNextId();
+		G.showNextId();
+
+		{
+			// It is sub block to keep
+			// all those interns.
+			Employee X = new Employee("GFG4", 23);
+			Employee Y = new Employee("GFG5", 21);
+			X.show();
+			Y.show();
+			X.showNextId();
+			Y.showNextId();
+			X = Y = null;
+			System.gc();
+			System.runFinalization();
+		}
+		E.showNextId();
+	}
+}
+
+```
+
+### 10.2 Mark-and-Sweep: Garbage Collection Algorithm
+
+There are many garbage collection algorithms that run in the background, of which one of them is mark and sweep. Any garbage collection algorithm must perform 2 basic operations. One, it should be able to detect all the unreachable objects and secondly, it must reclaim the heap space used by the garbage objects and make the space available again to the program. The above operations are performed by Mark and Sweep Algorithm in two phases as listed and described further as follows: 
+
+- Mark phase
+- Sweep phase
+
+#### 10.2.1 Mark Phase
+
+
+#### 10.2.2 Sweep Phase
+
