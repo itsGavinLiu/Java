@@ -22,12 +22,115 @@ Key Concepts:
 
 The following figure illustrates the hierarchy of the collection framework. 
 
-![image](https://user-images.githubusercontent.com/40971097/161405348-e7e1531d-d100-4658-a77c-53c3742b5a2a.png)
+![image](https://user-images.githubusercontent.com/40971097/161408657-c8b67319-930f-4594-87d2-ad6fbd4d365f.png)
 
-#### 7.2.1 Methods of the Collection Interface
+![image](https://user-images.githubusercontent.com/40971097/161408663-5b9b1093-75bc-4b79-a65b-3a754c917f32.png)
+
+
+
+### 7.3 Methods of the Collection Interface
 - `size()` - returns the current number of elements in the collection
 - `isEmpty()` - returns true if there's no element in the collection, otherwise false
 - `contains()` - returns true if the collection contains an element passed as a parameter
 - `add()` - adds a new element to the collection; returns true if the collection changed (element was added), otherwise false
 - `remove()` - removes element from the collection; returns true if collection changed (the element existed and has been removed), otherwise false
 - `clear()` - clears the collection contents
+
+### 7.4 Interfaces that extend the Collections Interface
+
+#### 7.4.1 Iterable Interface 
+This is the root interface for the entire collection framework. The collection interface extends the iterable interface. Therefore, inherently, all the interfaces and classes implement this interface. The main functionality of this interface is to provide an iterator for the collections. Therefore, this interface contains only one abstract method which is the iterator.
+
+#### 7.4.2 Collection Interface
+This interface extends the iterable interface and is implemented by all the classes in the collection framework. This interface contains all the basic methods which every collection has like adding the data into the collection, removing the data, clearing the data, etc. All these methods are implemented in this interface because these methods are implemented by all the classes irrespective of their style of implementation. And also, having these methods in this interface ensures that the names of the methods are universal for all the collections. Therefore, in short, we can say that this interface builds a foundation on which the collection classes are implemented.
+
+#### 7.4.3 List Interface
+This is a child interface of the collection interface. This interface is dedicated to the data of the list type in which we can store all the ordered collection of the objects. This also allows duplicate data to be present in it. This list interface is implemented by various classes like ArrayList, Vector, Stack, etc. Since all the subclasses implement the list, we can instantiate a list object with any of these classes. For example, 
+```java
+List <T>al = new ArrayList<>(); 
+List <T>ll = new LinkedList<>(); 
+List <T>v = new Vector<>(); 
+
+# T is the type of the object 
+```
+
+The classes which implement the List interface are as follows:
+
+- `ArrayList` - ArrayList provides us with dynamic arrays in Java. Though, it may be slower than standard arrays but can be helpful in programs where lots of manipulation in the array is needed. The size of an ArrayList is increased automatically if the collection grows or shrinks if the objects are removed from the collection. Java ArrayList allows us to randomly access the list. ArrayList can not be used for primitive types, like int, char, etc. We will need a wrapper class for such cases. 
+
+- `LinkedList` - LinkedList class is an implementation of the LinkedList data structure which is a linear data structure where the elements are not stored in contiguous locations and every element is a separate object with a data part and address part. The elements are linked using pointers and addresses. Each element is known as a node. 
+
+- `Vector` - A vector provides us with dynamic arrays in Java. Though, it may be slower than standard arrays but can be helpful in programs where lots of manipulation in the array is needed. This is identical to ArrayList in terms of implementation. However, the primary difference between a vector and an ArrayList is that a Vector is synchronized and an ArrayList is non-synchronized. 
+
+- `Stack` - Stack class models and implements the Stack data structure. The class is based on the basic principle of last-in-first-out. In addition to the basic push and pop operations, the class provides three more functions of empty, search and peek. The class can also be referred to as the subclass of Vector. 
+
+#### 7.4.4  Queue Interface
+As the name suggests, a queue interface maintains the FIFO(First In First Out) order similar to a real-world queue line. This interface is dedicated to storing all the elements where the order of the elements matter. There are various classes like PriorityQueue, ArrayDeque, etc. Since all these subclasses implement the queue, we can instantiate a queue object with any of these classes. For example, 
+```java
+Queue <T>pq = new PriorityQueue<>(); 
+Queue <T>ad = new ArrayDeque<>(); 
+
+# T is the type of the object.  
+```
+
+The most frequently used implementation of the queue interface is the PriorityQueue. 
+ 
+- `PriorityQueue` - A PriorityQueue is used when the objects are supposed to be processed based on the priority. It is known that a queue follows the First-In-First-Out algorithm, but sometimes the elements of the queue are needed to be processed according to the priority and this class is used in these cases. The PriorityQueue is based on the priority heap. The elements of the priority queue are ordered according to the natural ordering, or by a Comparator provided at queue construction time, depending on which constructor is used. Let’s understand the priority queue with an example:
+
+#### 7.4.5  Deque Interface
+This is a very slight variation of the queue data structure. Deque, also known as a double-ended queue, is a data structure where we can add and remove the elements from both ends of the queue. This interface extends the queue interface. The class which implements this interface is ArrayDeque. Since ArrayDeque class implements the Deque interface, we can instantiate a deque object with this class. For example, 
+ 
+```java
+Deque<T>ad = new ArrayDeque<>(); 
+
+# T is the type of the object.  
+```
+
+The class which implements the deque interface is ArrayDeque. 
+
+- `ArrayDeque` - ArrayDeque class which is implemented in the collection framework provides us with a way to apply resizable-array. This is a special kind of array that grows and allows users to add or remove an element from both sides of the queue. Array deques have no capacity restrictions and they grow as necessary to support usage.
+
+#### 7.4.6  Set Interface
+
+A set is an unordered collection of objects in which duplicate values cannot be stored. This collection is used when we wish to avoid the duplication of the objects and wish to store only the unique objects. This set interface is implemented by various classes like HashSet, TreeSet, LinkedHashSet, etc. Since all the subclasses implement the set, we can instantiate a set object with any of these classes. For example,
+```java
+Set<T>hs = new HashSet<>(); 
+Set<T>lhs = new LinkedHashSet<>(); 
+Set<T>ts = new TreeSet<>(); 
+# T is the type of the object.  
+```
+
+The following are the classes that implement the Set interface:
+
+- `HashSet` - The HashSet class is an inherent implementation of the hash table data structure. The objects that we insert into the HashSet do not guarantee to be inserted in the same order. The objects are inserted based on their hashcode. This class also allows the insertion of NULL elements. 
+
+- `LinkedHashSet` - A LinkedHashSet is very similar to a HashSet. The difference is that this uses a doubly linked list to store the data and retains the ordering of the elements. 
+
+
+#### 7.4.7  SortedSet Interface
+This interface is very similar to the set interface. The only difference is that this interface has extra methods that maintain the ordering of the elements. The sorted set interface extends the set interface and is used to handle the data which needs to be sorted. The class which implements this interface is TreeSet. Since this class implements the SortedSet, we can instantiate a SortedSet object with this class. For example,
+```java
+SortedSet<T> ts = new TreeSet<> (); 
+
+# T is the type of the object.  
+```
+The class which implements the sorted set interface is TreeSet. 
+ 
+- `TreeSet` - The TreeSet class uses a Tree for storage. The ordering of the elements is maintained by a set using their natural ordering whether or not an explicit comparator is provided. This must be consistent with equals if it is to correctly implement the Set interface. It can also be ordered by a Comparator provided at set creation time, depending on which constructor is used.
+
+
+#### 7.4.8  Map Interface
+A map is a data structure that supports the key-value pair mapping for the data. This interface doesn’t support duplicate keys because the same key cannot have multiple mappings. A map is useful if there is data and we wish to perform operations on the basis of the key. This map interface is implemented by various classes like HashMap, TreeMap, etc. Since all the subclasses implement the map, we can instantiate a map object with any of these classes. For example,
+ 
+```java
+Map<T> hm = new HashMap<> (); 
+Map<T> tm = new TreeMap<> ();
+ 
+# T is the type of the object. 
+```
+The frequently used implementation of a Map interface is a HashMap. 
+ 
+- `HashMap` - HashMap provides the basic implementation of the Map interface of Java. It stores the data in (Key, Value) pairs. To access a value in a HashMap, we must know its key. HashMap uses a technique called Hashing. Hashing is a technique of converting a large String to a small String that represents the same String so that the indexing and search operations are faster. HashSet also uses HashMap internally.
+
+
+## Comparable vs Comparator
