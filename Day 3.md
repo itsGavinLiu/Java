@@ -294,3 +294,30 @@ Important points for static variables:
 - They cannot refer to this or super in any way.
 
 **static Classes**: A class can be made static only if it is a nested class. We cannot declare a top-level class with a static modifier but can declare nested classes as static. Such types of classes are called Nested static classes. 
+
+
+## 13. OOP
+Object-Oriented Programming or OOPs refers to languages that uses objects in programming. The main aim of OOP is to bind together the data and the functions that operate on them so that no other part of the code can access this data except that function.
+
+### 13.1 Method Declaration
+#### 13.1.1 Access Modifier
+Defines access type of the method i.e. from where it can be accessed in your application. In Java, there 4 type of the access specifiers. 
+- `public`: accessible in all class in your application.
+- `protected`: accessible within the package in which it is defined and in its subclass(es)(including subclasses declared outside the package)
+- `private`: accessible only within the class in which it is defined.
+- `default` (declared/defined without using any modifier): accessible within same class and package within which its class is defined.
+
+#### 13.1.2 The return type
+The data type of the value returned by the method or void if does not return a value.
+
+#### 13.1.3 Method Name
+The rules for field names apply to method names as well, but the convention is a little different.
+
+#### 13.1.4 Parameter list
+Comma separated list of the input parameters are defined, preceded with their data type, within the enclosed parenthesis. If there are no parameters, you must use empty parentheses ().
+
+#### 13.1.5 Exception list
+The exceptions you expect by the method can throw, you can specify these exception(s).
+
+#### 13.1.6 Method body
+It is enclosed between braces. The code you need to be executed to perform your intended operations.
