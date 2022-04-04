@@ -35,6 +35,7 @@ Immutable class means once the object of the class is created its fields cannot 
 ### 9.	What’s the difference between “==” and equals method?
 
 •	The main difference is that .equals() is a method, and == is the operator.
+
 •	We can use == operators for reference comparison (address comparison) and .equals() method for content comparison. == checks if both objects point to the same memory location whereas .equals() evaluates to the comparison of values in the objects.
 
 ### 10.	What is wrapper class?
@@ -64,9 +65,15 @@ Object class is the root or superclass of the class hierarchy, which is present 
 
 ### 16.	Create a program to count how many files/folders are there inside one folder.
 •	the count method should take a parameter called Criteria like this: count(Criteria criteria){}
-•	For Criteria class, multiple conditions should be included such as: folder path, includeSubFolder or not, the extension of the file be counted and so on. 
-•	Optional: Take the input from keyboard.
-•	Take care of the invalid inputs. Exception handling.
-•	Get proper result displayed.
-”There are XXX file(s) and XXX folder(s) inside folder XXX with extension XXX.” or something user friendly.
 
+•	For Criteria class, multiple conditions should be included such as: folder path, includeSubFolder or not, the extension of the file be counted and so on. 
+
+•	Optional: Take the input from keyboard.
+
+•	Take care of the invalid inputs. Exception handling.
+
+•	Get proper result displayed.
+
+There are XXX file(s) and XXX folder(s) inside folder XXX with extension XXX.” or something user friendly.
+
+https://github.com/itsGavinLiu/JavaBatch/blob/main/HW/Count.java
