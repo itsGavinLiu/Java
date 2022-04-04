@@ -149,3 +149,148 @@ Java provides five keywords that are used to handle the exception.
 The most common use of the super keyword is to eliminate the confusion between superclasses and subclasses that have methods with the same name.
 
 **this** keyword refers to the current object in a method or constructor. The most common use of the this keyword is to eliminate the confusion between class attributes and parameters with the same name (because a class attribute is shadowed by a method or constructor parameter).
+
+### 12.7 Supplements
+
+#### 12.7.1 Final
+When a variable is declared with final keyword, its value can’t be modified. This also means that you must initialize a final variable,  otherwise, the compiler will throw a compile-time error. However, in the case of a reference final variable, the internal state of the object pointed by that reference variable can be changed. Note that this is not re-assigning. This property of final is called non-transitivity.
+
+Example
+```java
+class GFG {
+    public static void main(String[] args)
+    {
+        // Final reference variable
+        final StringBuilder sb = new StringBuilder("Geeks");
+ 
+        // Printing the element in StringBuilder object
+        System.out.println(sb);
+ 
+        // changing internal state of object reference by
+        //  final reference variable sb
+        sb.append("ForGeeks");
+ 
+        // Again printing the element in StringBuilder
+        // object after appending above element in it
+        System.out.println(sb);
+    }
+}
+```
+
+When a class is declared with final keyword, it is called a final class. A final class cannot be extended(inherited). 
+Therefore, we can use `final` to create an immutable class.
+- The class must be declared as **final** so that child classes can’t be created.
+- Data members in the class must be declared **private** so that direct access is not allowed.
+- Data members in the class must be declared as **final** so that we can’t change the value of it after object creation.
+- A parameterized constructor should initialize all the fields performing a deep copy so that data members can’t be modified with an object reference.
+- Deep Copy of objects should be performed in the getter methods to return a copy rather than returning the actual object reference)
+
+Example
+```java
+final class MyImmutableClass {
+    private final int id;
+    private final String name;
+    private final List<Integer> list;
+
+    private final List<C> list2;
+
+    public MyImmutableClass(int id, String name, List<Integer> list, List<C> list2) {
+        this.id = id;
+        this.name = name;
+        this.list = list;
+        this.list2 = list2;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Integer> getList() {
+        List<Integer> res = new ArrayList<>();
+        for (Integer num: list) {
+            res.add(num);
+        }
+        return res;
+//        return list;
+    }
+
+    public List<C> getList2() {
+        List<C> res = new ArrayList<>(list2);
+        return res;
+    }
+}
+```
+
+When a method is declared with final keyword, it is called a final method. A final method cannot be overridden. 
+
+|Key	|final	|finally	|finalize|
+| ------------- | ------------- | ------------- | ------------- |
+|Definition|	final is the keyword and access modifier which is used to apply restrictions on a class, method or variable. |finally is the block in Java Exception Handling to execute the important code whether the exception occurs or not.	|finalize is the method in Java which is used to perform clean up processing just before object is garbage collected.|
+|Applicable to|	Final keyword is used with the classes, methods and variables.	|Finally block is always related to the try and catch block in exception handling.	|finalize() method is used with the objects.|
+|Functionality|	(1) Once declared, final variable becomes constant and cannot be modified. (2) final method cannot be overridden by sub class. (3) final class cannot be inherited.	|(1) finally block runs the important code even if exception occurs or not. (2) finally block cleans up all the resources used in try block	|finalize method performs the cleaning activities with respect to the object before its destruction.|
+|Execution|	Final method is executed only when we call it.	|Finally block is executed as soon as the try-catch block is executed. It's execution is not dependant on the exception.|finalize method is executed just before the object is destroyed.|
+
+
+#### 12.7.2 static
+The static keyword in Java is used to share the same variable or method of a given class. 
+
+**static block**: If you need to do the computation in order to initialize your static variables, you can declare a static block that gets executed exactly once, when the class is first loaded. 
+```java
+class Test
+{
+    // static variable
+    static int a = 10;
+    static int b;
+      
+    // static block
+    static {
+        System.out.println("Static block initialized.");
+        b = a * 4;
+    }
+  
+    public static void main(String[] args)
+    {
+       System.out.println("from main");
+       System.out.println("Value of a : "+a);
+       System.out.println("Value of b : "+b);
+    }
+}
+```
+
+**static member**: When a member is declared static, it can be accessed before any objects of its class are created, and without reference to any object. 
+
+```java
+class Test
+{
+    // static method
+    static void m1()
+    {
+        System.out.println("from m1");
+    }
+  
+    public static void main(String[] args)
+    {
+          // calling m1 without creating
+          // any object of class Test
+           m1();
+    }
+}
+```
+
+**static variable**: When a variable is declared as static, then a single copy of the variable is created and shared among all objects at the class level. Static variables are, essentially, global variables. All instances of the class share the same static variable.
+
+Important points for static variables:
+- We can create static variables at the class level only.
+- static block and static variables are executed in the order they are present in a program.
+
+**static methods**:  The most common example of a static method is the main( ) method. As discussed above, Any static member can be accessed before any objects of its class are created, and without reference to any object. Methods declared as static have several restrictions: 
+
+- They can only directly call other static methods.
+- They can only directly access static data.
+- They cannot refer to this or super in any way.
+
+**static Classes**: A class can be made static only if it is a nested class. We cannot declare a top-level class with a static modifier but can declare nested classes as static. Such types of classes are called Nested static classes. 
