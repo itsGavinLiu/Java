@@ -78,5 +78,10 @@ Built-in methods:
 •	new BigInteger(String)
 
 
-### 13.	Write a program to implement the following activity diagram:
+### 13.	Write a program to implement the following activity diagram
+https://github.com/itsGavinLiu/JavaBatch/blob/main/HW/DoSomething.java
+
+### 14. Write a program to merge two arrays of int
+
+### 15.	Write a program to find the second largest number inside an array of int
 
