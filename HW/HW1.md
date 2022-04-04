@@ -82,6 +82,7 @@ Built-in methods:
 https://github.com/itsGavinLiu/JavaBatch/blob/main/HW/DoSomething.java
 
 ### 14. Write a program to merge two arrays of int
+https://github.com/itsGavinLiu/JavaBatch/blob/main/HW/MergeTwoArrays.java
 
 ### 15.	Write a program to find the second largest number inside an array of int
-
+https://github.com/itsGavinLiu/JavaBatch/blob/main/HW/SecondLargest.java
