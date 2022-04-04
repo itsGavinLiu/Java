@@ -56,7 +56,8 @@ A int is a data type that stores 32 bit signed two's compliment integer. On othe
 
 Serialization is the process of converting an object into a stream of bytes to store the object or transmit it to memory, a database, or a file. Its main purpose is to save the state of an object in order to be able to recreate it when needed. The reverse process is called deserialization.
 
-### 15.	Create List and Map. List A contains 1,2,3,4,10(integer) . Map B contains ("a","1") ("b","2") ("c","10")   (key = string, value = string) 
+### 15.	Create List and Map. 
+List A contains 1,2,3,4,10(integer). Map B contains ("a","1") ("b","2") ("c","10")   (key = string, value = string) 
 Question: get a list which contains all the elements in list A, but not in map B.
 
 https://github.com/itsGavinLiu/JavaBatch/blob/main/HW/GetAList.java
