@@ -23,7 +23,14 @@ Yes
 
 ### 7. From java 1.7, give an example of the try-resource feature.
 We can declare multiple resources just fine in a try-with-resources block by separating them with a semicolon:
-![image](https://user-images.githubusercontent.com/40971097/161479164-e117f44b-a252-4ff6-afdb-d7c55cc286ca.png)
+```java
+try (Scanner scanner = new Scanner(new File("testRead.txt"));
+    PrintWriter writer = new PrintWriter(new File("testWrite.txt"))) {
+    while (scanner.hasNext()) {
+	writer.print(scanner.nextLine());
+    }
+}
+```
 
 ### 8. What will happen to the Exception object after exception handling?
 The Exception object will be garbage collected in the next garbage collection.
