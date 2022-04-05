@@ -41,10 +41,11 @@ A relational database is a collection of data items with pre-defined relationshi
 The degree of a relationship is the number of entity types that participate(associate) in a relationship. By seeing an E-R diagram, we can simply tell the degree of a relationship i.e the number of an entity type that is connected to a relationship is the degree of that relationship.
 
 We have the following degree of relationships:
-- Unary: both the participating entity type are the same
-- Binary:  exactly two entity type participates
-- Ternary
-- N-ary
+- Unary: both the participating entity type are the same. Degree = 1
+- Binary: exactly two entity type participates. Degree = 2.
+- Ternary: exactly three entity type participates. Degree = 3.
+- N-ary: when ‘n’ number of entities are participating. Degree = n.
+
 ### 1.4 Participation Constraints
 
 ### 1.5 Database Normalization
