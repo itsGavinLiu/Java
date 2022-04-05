@@ -218,3 +218,63 @@ Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
 |Fair lock management	|Yes, Fair lock management is available in case of lock framework. It hands over the lock to long waiting thread. Even in fairness mode set to true, if trylock is coded, it is served first.	|Not possible with synchronized|
 |List of waiting threads	|Yes, List of waiting threads can be seen using Lock framework	|Not possible with synchronized|
 |Release of lock in exceptions	|`Lock.lock(); myMethod();Lock.unlock();` unlock() cant be executed in this code if any exception being thrown from myMethod().|Synchronized works clearly in this case. It releases the lock|
+
+### 19.9 Lock Interface
+Lockt is defined inside the java.util.concurrent.lock package and it provides extensive operations for locking.
+
+#### 19.9.1 Methods
+- `void lock()` – acquire the lock if it's available; if the lock isn't available a thread gets blocked until the lock is released
+- `void lockInterruptibly()` – this is similar to the lock(), but it allows the blocked thread to be interrupted and resume the execution through a thrown java.lang.InterruptedException
+- `boolean tryLock()` – this is a non-blocking version of lock() method; it attempts to acquire the lock immediately, return true if locking succeeds
+- `boolean tryLock(long timeout, TimeUnit timeUnit)` – this is similar to tryLock(), except it waits up the given timeout before giving up trying to acquire the Lock
+- `void unlock()` – unlocks the Lock instance
+
+#### 19.9.2 ReentrantLock
+ReentrantLock class implements the Lock interface. It offers the same concurrency and memory semantics, as the implicit monitor lock accessed using synchronized methods and statements, with extended capabilities.
+
+ReentrantLock allows threads to enter into the lock on a resource more than once. When the thread first enters into the lock, a hold count is set to one. Before unlocking the thread can re-enter into lock again and every time hold count is incremented by one. For every unlocks request, hold count is decremented by one and when hold count is 0, the resource is unlocked. 
+
+Example
+```java
+public void some_method()
+{
+        reentrantlock.lock();
+        try
+        {
+            //Do some work
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            reentrantlock.unlock();
+        }
+         
+}
+```
+
+### 19.10 ReadWriteLock
+A java.util.concurrent.locks.ReadWriteLock is a high-level thread lock tool. It allows various threads to read a specific resource but allows only one to write it, at a time. 
+The approach is, that multiple threads can read from a shared resource without causing concurrency errors. The concurrency errors first occur when writes and reads to a shared resource occur simultaneously, or if multiple writes take place simultaneously.
+
+
+Read lock and Write lock which allows a thread to lock the ReadWriteLock either for reading or writing. 
+
+- `Lock readLock()`:If there is no thread that has requested the write lock and the lock for writing, then multiple threads can lock the lock for reading. It means multiple threads can read the data at the very moment, as long as there’s no thread to write the data or to update the data.
+- `Lock writeLock()`: If no threads are writing or reading, only one thread at a moment can lock the lock for writing. Other threads have to wait until the lock gets released. It means, only one thread can write the data at the very moment, and other threads have to wait.
+
+### 10.11 Future vs CompletableFuture
+`CompletableFuture` is an extension to Java’s Future API which was introduced in Java 5.
+
+A Future is used as a reference to the result of an asynchronous computation. It provides an `isDone()` method to check whether the computation is done or not, and a `get()` method to retrieve the result of the computation when it is done.
+
+However, `future` lacks some important features
+- It cannot be manually completed
+- cannot perform further action on a Future’s result without blocking
+- Multiple Futures cannot be chained together
+- can not combine multiple Futures together
+- No Exception Handling 
+
+`CompletableFuture` implements Future and CompletionStage interfaces and provides a huge set of convenience methods for creating, chaining and combining multiple Futures. You can achieve all of the above with `CompletableFuture`.
