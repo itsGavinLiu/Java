@@ -329,6 +329,15 @@ Objects communicate with one another by sending and receiving information to eac
 #### 13.3.1 Abstraction
 Data Abstraction is the property by virtue of which only the essential details are displayed to the user.The trivial or the non-essentials units are not displayed to the user. In java, abstraction is achieved by interfaces and abstract classes. We can achieve 100% abstraction using interfaces.
 
+Abstract class and interface both are used to achieve abstraction where we can declare the abstract methods. Abstract class and interface both can't be instantiated.
+
+|Abstract class	|Interface|
+|----|----|
+|Abstract class can have abstract and non-abstract methods.	|Interface can have only abstract methods. Since Java 8, it can have default and static methods also.|
+|Abstract class doesn't support multiple inheritance.	|Interface supports multiple inheritance.|
+|Abstract class can have final, non-final, static and non-static variables.	|Interface has only static and final variables.|
+|Abstract class can provide the implementation of interface.	|Interface can't provide the implementation of abstract class.|
+
 #### 13.3.2 Encapsulation
 It is defined as the wrapping up of data under a single unit. It is the mechanism that binds together code and the data it manipulates. Another way to think about encapsulation is, it is a protective shield that prevents the data from being accessed by the code outside this shield. 
 
@@ -339,6 +348,14 @@ Important terminologies:
 - Super Class: The class whose features are inherited is known as superclass(or a base class or a parent class).
 - Sub Class: The class that inherits the other class is known as subclass(or a derived class, extended class, or child class). The subclass can add its own fields and methods in addition to the superclass fields and methods.
 - Reusability: Inheritance supports the concept of “reusability”, i.e. when we want to create a new class and there is already a class that includes some of the code that we want, we can derive our new class from the existing class. By doing this, we are reusing the fields and methods of the existing class.
+
+
+|extends	|implements|
+|---|---|
+|By using “extends” keyword a class can inherit another class, or an interface can inherit other interfaces	|By using “implements” keyword a class can implement an interface|
+|It is not compulsory that subclass that extends a superclass override all the methods in a superclass.	|It is compulsory that class implementing an interface has to implement all the methods of that interface.|
+|Only one superclass can be extended by a class.	|A class can implement any number of an interface at a time|
+|Any number of interfaces can be extended by interface.	|An interface can never implement any other interface|
 
 #### 13.3.4 Polymorphism
 
@@ -384,3 +401,50 @@ public class Sum {
 
 **overriding**
 Overriding is a feature that allows a subclass or child class to provide a specific implementation of a method that is already provided by one of its super-classes or parent classes. Method overriding is one of the way by which java achieve Run Time Polymorphism.The version of a method that is executed will be determined by the object that is used to invoke it. 
+
+```java
+// Base Class
+class Parent {
+    void show()
+    {
+        System.out.println("Parent's show()");
+    }
+}
+  
+// Inherited class
+class Child extends Parent {
+    // This method overrides show() of Parent
+    @Override
+    void show()
+    {
+        System.out.println("Child's show()");
+    }
+}
+  
+// Driver class
+class Main {
+    public static void main(String[] args)
+    {
+        // If a Parent type reference refers
+        // to a Parent object, then Parent's
+        // show is called
+        Parent obj1 = new Parent();
+        obj1.show();
+  
+        // If a Parent type reference refers
+        // to a Child object Child's show()
+        // is called. This is called RUN TIME
+        // POLYMORPHISM.
+        Parent obj2 = new Child();
+        obj2.show();
+    }
+}
+```
+
+Rules:
+- Final methods can not be overridden
+- Static methods can not be overridden(Method Overriding vs Method Hiding)
+- Private methods can not be overridden
+- The overriding method must have same return type (or subtype)
+- Invoking overridden method from sub-class : We can call parent class method in overriding method using super keyword.
+- The access modifier for an overriding method can allow more, but not less, access than the overridden method. (a protected method in the super-class can be made public, but not private, in the subclass.)
