@@ -577,10 +577,5 @@ class tst
 |---|---|
 |Used to throw an exception for a method	|Used to indicate what exception type may be thrown by a method|
 |Cannot throw multiple exceptions	|Can declare multiple exceptions|
-|Syntax: 
-- throw is followed by an object (new type)
-- used inside the method |
-Syntax:
-- throws is followed by a class
-- and used with the method signature|
+|Syntax: throw is followed by an object (new type); used inside the method | Syntax: throws is followed by a class and used with the method signature|
 
