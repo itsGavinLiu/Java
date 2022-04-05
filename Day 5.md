@@ -209,4 +209,12 @@ Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
     at OutOfMemoryErrorExample.main(OutOfMemoryErrorExample.java:8)
 ```
 
-### 19.8 Lock
+### 19.8 Lock vs Synchronized
+
+|Parameters	|Lock Framework	|Synchronized|
+|---|---|---|
+|Across Methods	|Yes, Locks can be implemented across the methods, you can invoke lock() in method1 and invoke unlock() in method2.	|Not possible|
+|try to acquire lock	|yes, trylock(timeout) method is supported by Lock framework, which will get the lock on the resource if it is available, else it returns false and Thread wont get blocked.	|Not possible with synchronized|
+|Fair lock management	|Yes, Fair lock management is available in case of lock framework. It hands over the lock to long waiting thread. Even in fairness mode set to true, if trylock is coded, it is served first.	|Not possible with synchronized|
+|List of waiting threads	|Yes, List of waiting threads can be seen using Lock framework	|Not possible with synchronized|
+|Release of lock in exceptions	|`Lock.lock(); myMethod();Lock.unlock();` unlock() cant be executed in this code if any exception being thrown from myMethod().|Synchronized works clearly in this case. It releases the lock|
