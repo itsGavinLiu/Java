@@ -21,7 +21,7 @@ A relational database is a collection of data items with pre-defined relationshi
 |Backup and Recovery	|The databases do not ensure that the data will be available after failure arises.	|The database management system (DBMS) ensures that the data will always be available even after system failures.|
 
 
-## 1.2 File System vs DBMS
+### 1.2 File System vs DBMS
 
 |Basis	|File System	|DBMS|
 |---|---|---|
@@ -37,3 +37,20 @@ A relational database is a collection of data items with pre-defined relationshi
 |User Access	|Only one user can access data at a time.	|Multiple users can access data at a time.|
 
 
+### 1.3 Degree and Cardinality of a relation
+The degree of a relationship is the number of entity types that participate(associate) in a relationship. By seeing an E-R diagram, we can simply tell the degree of a relationship i.e the number of an entity type that is connected to a relationship is the degree of that relationship.
+
+We have the following degree of relationships:
+- Unary: both the participating entity type are the same
+- Binary:  exactly two entity type participates
+- Ternary
+- N-ary
+### 1.4 Participation Constraints
+
+### 1.5 Database Normalization
+
+#### 1.5.1 1NF
+
+#### 1.5.2 2NF
+
+#### 1.5.3 3NF
