@@ -287,7 +287,7 @@ Important points for static variables:
 - We can create static variables at the class level only.
 - static block and static variables are executed in the order they are present in a program.
 
-**static methods**:  The most common example of a static method is the main( ) method. As discussed above, Any static member can be accessed before any objects of its class are created, and without reference to any object. Methods declared as static have several restrictions: 
+**static methods**:  The most common example of a static method is the main( ) method. Any static member can be accessed before any objects of its class are created, and without reference to any object. Methods declared as static have several restrictions: 
 
 - They can only directly call other static methods.
 - They can only directly access static data.
@@ -321,3 +321,66 @@ The exceptions you expect by the method can throw, you can specify these excepti
 
 #### 13.1.6 Method body
 It is enclosed between braces. The code you need to be executed to perform your intended operations.
+
+### 13.2 Message Passing
+Objects communicate with one another by sending and receiving information to each other. A message for an object is a request for execution of a procedure and therefore will invoke a function in the receiving object that generates the desired results. Message passing involves specifying the name of the object, the name of the function and the information to be sent.
+
+### 13.3 Four Pillars of OOPs
+#### 13.3.1 Abstraction
+Data Abstraction is the property by virtue of which only the essential details are displayed to the user.The trivial or the non-essentials units are not displayed to the user. In java, abstraction is achieved by interfaces and abstract classes. We can achieve 100% abstraction using interfaces.
+
+#### 13.3.2 Encapsulation
+It is defined as the wrapping up of data under a single unit. It is the mechanism that binds together code and the data it manipulates. Another way to think about encapsulation is, it is a protective shield that prevents the data from being accessed by the code outside this shield. 
+
+#### 13.3.3 Inheritance
+Inheritance is an important pillar of OOP(Object Oriented Programming). It is the mechanism in java by which one class is allow to inherit the features(fields and methods) of another class. 
+
+Important terminologies:
+- Super Class: The class whose features are inherited is known as superclass(or a base class or a parent class).
+- Sub Class: The class that inherits the other class is known as subclass(or a derived class, extended class, or child class). The subclass can add its own fields and methods in addition to the superclass fields and methods.
+- Reusability: Inheritance supports the concept of “reusability”, i.e. when we want to create a new class and there is already a class that includes some of the code that we want, we can derive our new class from the existing class. By doing this, we are reusing the fields and methods of the existing class.
+
+#### 13.3.4 Polymorphism
+
+It refers to the ability of OOPs programming languages to differentiate between entities with the same name efficiently. This is done by Java with the help of the signature and declaration of these entities. 
+
+**overloading**
+Overloading is the ability to define more than one method with the same name in a class. , but different signatures where the signature can differ by the number of input parameters or type of input parameters or both. Overloading is related to compile-time (or static) polymorphism.
+
+```java
+public class Sum {
+  
+    // Overloaded sum(). This sum takes two int parameters
+    public int sum(int x, int y)
+    {
+        return (x + y);
+    }
+  
+    // Overloaded sum(). This sum takes three int parameters
+    public int sum(int x, int y, int z)
+    {
+        return (x + y + z);
+    }
+  
+    // Overloaded sum(). This sum takes two double parameters
+    public double sum(double x, double y)
+    {
+        return (x + y);
+    }
+
+    public static void main(String args[])
+    {
+        Sum s = new Sum();
+        System.out.println(s.sum(10, 20));
+        System.out.println(s.sum(10, 20, 30));
+        System.out.println(s.sum(10.5, 20.5));
+    }
+}
+```
+**Note** 
+- We can have two ore more static methods with same name, but differences in input parameters. 
+- We cannot overload two methods in Java if they differ only by static keyword (number of parameters and types of parameters is same).
+-  we can overload `main()` in Java.
+
+**overriding**
+Overriding is a feature that allows a subclass or child class to provide a specific implementation of a method that is already provided by one of its super-classes or parent classes. Method overriding is one of the way by which java achieve Run Time Polymorphism.The version of a method that is executed will be determined by the object that is used to invoke it. 
