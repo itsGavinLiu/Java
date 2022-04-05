@@ -55,3 +55,6 @@ We have the following degree of relationships:
 #### 1.5.2 2NF
 
 #### 1.5.3 3NF
+
+### 1.6 Document Data Store
+
