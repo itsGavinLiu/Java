@@ -448,3 +448,139 @@ Rules:
 - The overriding method must have same return type (or subtype)
 - Invoking overridden method from sub-class : We can call parent class method in overriding method using super keyword.
 - The access modifier for an overriding method can allow more, but not less, access than the overridden method. (a protected method in the super-class can be made public, but not private, in the subclass.)
+
+
+## 14. Exceptions
+An exception is an unwanted or unexpected event, which occurs during the execution of a program i.e at run time, that disrupts the normal flow of the program’s instructions. Exceptions can be caught and handled by the program. When an exception occurs within a method, it creates an object. This object is called the exception object. It contains information about the exception such as the name and description of the exception and the state of the program when the exception occurred.
+
+### 14.1 Error vs Exception
+![image](https://user-images.githubusercontent.com/40971097/161788895-bc2036d3-a655-4a3a-8456-27cadb9de6e0.png)
+
+- Error: An Error indicates a serious problem that a reasonable application should not try to catch.
+- Exception: Exception indicates conditions that a reasonable application might try to catch.
+
+### 14.2 Checked Exceptions
+- Checked exceptions are called compile-time exceptions because these exceptions are checked at compile-time by the compiler.
+- ClassNotFound, IOException, SQLException
+
+### 14.3 Unchecked Expections
+- If a program throws an unchecked exception, and even if we didn’t handle or declare it, the program would not give a compilation error.
+- ArithmeticException, ArrayIndexOutOfBoundsException, ClassCastException
+
+### 14.4 How Programmer handles an Exception
+Java exception handling is managed via five keywords: try, catch, throw, throws, and finally
+
+#### 14.4.1 try-catch clause
+```java
+try {
+    // block of code to monitor for errors
+    // the code you think can raise an exception
+}
+catch (ExceptionType1 exOb) {
+    // exception handler for ExceptionType1
+}
+catch (ExceptionType2 exOb) {
+    // exception handler for ExceptionType2
+}
+// optional
+finally {
+    // block of code to be executed after try block ends
+}
+```
+
+Example
+```java
+class GFG
+{
+    public static void main (String[] args)
+    {
+         
+        // array of size 4.
+        int[] arr = new int[4];
+        try
+        {
+            int i = arr[4];
+                 
+            // this statement will never execute
+            // as exception is raised by above statement
+            System.out.println("Inside try block");
+        }
+        catch(ArrayIndexOutOfBoundsException ex)
+        {
+            System.out.println("Exception caught in Catch block");
+        }
+         
+        // rest program will be executed
+        System.out.println("Outside try-catch clause");
+    }
+}
+```
+
+#### 14.4.2 try-finally clause
+What if the Exception occurred in try-block is not handled in catch block, we use try-finally clause
+```java
+class GFG
+{
+    public static void main (String[] args)
+    {
+         
+        // array of size 4.
+        int[] arr = new int[4];
+        try
+        {
+            int i = arr[4];
+                 
+            // this statement will never execute
+            // as exception is raised by above statement
+            System.out.println("Inside try block");
+        }
+         
+        // not a appropriate handler
+        catch(NullPointerException ex)
+        {
+            System.out.println("Exception has been caught");
+        }
+         
+        // rest program will not execute
+        System.out.println("Outside try-catch clause");
+    }
+}
+```
+
+`finally`: no matter whether an exception occur in try-block or not, finally will always be executed. 
+- If an exception has occurred in try block then control flow will be finally block followed by default exception handling mechanism.
+- If an exception does not occur in try block then control flow will be finally block followed by rest of the program.
+
+#### 14.4.3 throw
+- `throw` is used to explicitly throw an exception from a method or any block of code. 
+- either checked or unchecked exception. 
+- mainly used to throw custom exceptions.
+- Instance must be of type **Throwable** or a subclass of Throwable. 
+
+#### 14.4.4 throws
+- `throws` is used to indicate that a method might throw one of the listed type exceptions. 
+- The caller to these methods has to handle the exception using a try-catch block.
+- `throws` is required only for checked exception 
+
+```java
+class tst
+{
+    public static void main(String[] args)throws InterruptedException
+    {
+        Thread.sleep(10000);
+        System.out.println("Hello Geeks");
+    }
+}
+```
+
+|throw	|throws|
+|---|---|
+|Used to throw an exception for a method	|Used to indicate what exception type may be thrown by a method|
+|Cannot throw multiple exceptions	|Can declare multiple exceptions|
+|Syntax: 
+- throw is followed by an object (new type)
+- used inside the method |
+Syntax:
+- throws is followed by a class
+- and used with the method signature|
+
