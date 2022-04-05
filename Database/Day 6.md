@@ -1,6 +1,6 @@
 # Day 6
 1. Relational Database
-
+2. No-Relational Database
 
 ## 1. Relational Database
 A relational database is a collection of data items with pre-defined relationships between them. These items are organized as a set of tables with columns and rows. Tables are used to hold information about the objects to be represented in the database.
@@ -56,5 +56,8 @@ We have the following degree of relationships:
 
 #### 1.5.3 3NF
 
-### 1.6 Document Data Store
+
+## 2. No-Relational Database
+
+### 2.1 Document Data Store
 
