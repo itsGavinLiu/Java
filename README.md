@@ -1,3 +1,3 @@
-# Java Core 
-Learning Core Java from scratch.
+# Java Batch 
+Learning Core Java & Advanced Java & Database from scratch.
 
