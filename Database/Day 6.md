@@ -47,15 +47,32 @@ We have the following degree of relationships:
 - N-ary: when ‘n’ number of entities are participating. Degree = n.
 
 ### 1.4 Participation Constraints
+In a Relationship, Participation constraint specifies the existence of an entity when it is related to another entity in a relationship type. It is also called minimum cardinality constraint.
+
+- Total Participation: Each entity in the entity set is involved in at least one relationship in a relationship set i.e. the number of relationship in every entity is involved is greater than 0. 
+- Partial Participation: Each entity in entity set may or may not occur in at least one relationship in a relationship set.
+
 
 ### 1.5 Database Normalization
+It includes eliminating unstructured data and redundancy (duplicates) in order to ensure logical data storage.
+At its most basic, normalization is simply creating a standard format for all data throughout a company:
+
+- Miss EMILY will be written in Ms. Emily
+- 8023097864 will be written 802-309-7864
+
+Beyond basic formatting, there are five “normal forms” performing data normalization. Each rule focuses on putting entity types into number categories depending on the level of complexity. 
 
 #### 1.5.1 1NF
+To be considered 1NF, each entry must have `only one single value` for each cell and each record must be `unique`.
 
 #### 1.5.2 2NF
+Based on 1NF, data must have only one primary key. To separate data to only have one primary key, all subsets of data that can be placed in multiple rows should be placed in separate tables.
 
 #### 1.5.3 3NF
+Based on 2NF, data in a table must only be dependent on the primary key. If the primary key is changed, all data that is impacted must be put into a new table.
 
+### 1.6 Denormalization
+Denormalization is a database optimization technique in which we add redundant data to one or more tables. This can help us avoid costly joins in a relational database. Note that denormalization does not mean not doing normalization. It is an optimization technique that is applied after doing normalization. 
 
 ## 2. No-Relational Database
 
