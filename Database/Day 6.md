@@ -117,6 +117,12 @@ A relation is in third normal form, if there is no transitive dependency for non
 ### 1.6 Denormalization
 Denormalization is a database optimization technique in which we add redundant data to one or more tables. This can help us avoid costly joins in a relational database. Note that denormalization does not mean not doing normalization. It is an optimization technique that is applied after doing normalization. 
 
+### 1.7 ACID Properties
+RDBMSs must exhibit four “ACID” properties:
 
+- Atomicity means all transactions must succeed or fail completely. They cannot be partially-complete, even in the case of system failure.
+- Consistency means that at each step the database follows invariants: rules which validate and prevent corruption.
+- Isolation prevents concurrent transactions from affecting each other. Transactions must result in the same final state as if they were run sequentially, even if they were run in parallel.
+- Durability makes transactions final. Even system failure cannot roll-back the effects of a successful transaction.
 
   
