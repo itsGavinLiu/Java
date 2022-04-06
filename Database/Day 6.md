@@ -3,7 +3,8 @@
 2. No-Relational Database
 
 ## 1. Relational Database
-A relational database is a collection of data items with pre-defined relationships between them. These items are organized as a set of tables with columns and rows. Tables are used to hold information about the objects to be represented in the database.
+- A relational database is a collection of data items with pre-defined relationships between them. 
+- These items are organized as a set of tables with columns and rows.
 
 ### 1.1 Database vs DBMS
 - A collection of related pieces of data, whose purpose is to solve the data management needs of an institution is called a Database.
@@ -38,13 +39,20 @@ A relational database is a collection of data items with pre-defined relationshi
 
 
 ### 1.3 Degree and Cardinality of a relation
-The degree of a relationship is the number of entity types that participate(associate) in a relationship. By seeing an E-R diagram, we can simply tell the degree of a relationship i.e the number of an entity type that is connected to a relationship is the degree of that relationship.
+- Degree - The number of different entity sets participating in a relationship set.
+- Cardinality - The number of times an entity of an entity set participates in a relationship set.
 
 We have the following degree of relationships:
-- Unary: both the participating entity type are the same. Degree = 1
+- Unary: both the participating entity type are the same. Degree = 1.
 - Binary: exactly two entity type participates. Degree = 2.
 - Ternary: exactly three entity type participates. Degree = 3.
 - N-ary: when ‘n’ number of entities are participating. Degree = n.
+
+We have the following types of cardinality:
+- One to one – When each entity in each entity set can take part only once in the relationship.
+- Many to one – When entities in one entity set can take part only once in the relationship set and entities in other entity set can take part more than once in the relationship set.
+- Many to many – When entities in all entity sets can take part more than once in the relationship.
+
 
 ### 1.4 Participation Constraints
 In a Relationship, Participation constraint specifies the existence of an entity when it is related to another entity in a relationship type. It is also called minimum cardinality constraint.
@@ -52,9 +60,13 @@ In a Relationship, Participation constraint specifies the existence of an entity
 - Total Participation: Each entity in the entity set is involved in at least one relationship in a relationship set i.e. the number of relationship in every entity is involved is greater than 0. 
 - Partial Participation: Each entity in entity set may or may not occur in at least one relationship in a relationship set.
 
+<p align="center"><img src="https://user-images.githubusercontent.com/40971097/162010059-aee99bcd-f633-4f61-9e92-a3abaca180fb.png">
+
+Every student in Student Entity set is participating in relationship but there exists a course C4 which is not taking part in the relationship. 
+
 
 ### 1.5 Database Normalization
-It includes eliminating unstructured data and redundancy (duplicates) in order to ensure logical data storage.
+Database normalization is the process of organizing the attributes of the database to reduce or eliminate data redundancy (having the same data but at different places). 
 At its most basic, normalization is simply creating a standard format for all data throughout a company:
 
 - Miss EMILY will be written in Ms. Emily
@@ -63,18 +75,48 @@ At its most basic, normalization is simply creating a standard format for all da
 Beyond basic formatting, there are five “normal forms” performing data normalization. Each rule focuses on putting entity types into number categories depending on the level of complexity. 
 
 #### 1.5.1 1NF
+If a relation contain composite or multi-valued attribute, it violates first normal form.
+
 To be considered 1NF, each entry must have `only one single value` for each cell and each record must be `unique`.
+<p align="center"><img src="https://user-images.githubusercontent.com/40971097/162011300-b487ff20-32e5-4e9c-98a5-78476a13a6e8.png">
+
 
 #### 1.5.2 2NF
-Based on 1NF, data must have only one primary key. To separate data to only have one primary key, all subsets of data that can be placed in multiple rows should be placed in separate tables.
+To be in second normal form, a relation must be in first normal form and relation must not contain any partial dependency (If the proper subset of candidate key determines non-prime attribute).
+In another word, data must have only one primary key. To separate data to only have one primary key, all subsets of data that can be placed in multiple rows should be placed in separate tables.
+<p align="center"><img src="https://user-images.githubusercontent.com/40971097/162012277-8befd968-14c1-493f-895d-50facabcf2c0.png" align = "center" width="500" height="250">
+
+
+Here,
+COURSE_FEE cannot alone decide the value of COURSE_NO or STUD_NO;
+  
+COURSE_FEE together with STUD_NO cannot decide the value of COURSE_NO;
+  
+COURSE_FEE together with COURSE_NO cannot decide the value of STUD_NO;
+
+Hence,
+COURSE_FEE would be a non-prime attribute, as it does not belong to the one only candidate key {STUD_NO, COURSE_NO};
+  
+But, COURSE_NO -> COURSE_FEE, i.e., COURSE_FEE is dependent on COURSE_NO, which is a proper subset of the candidate key. 
+
+  
+To convert the above relation to 2NF,
+we need to split the table into two tables such as:
+  
+Table 1: STUD_NO, COURSE_NO
+  
+Table 2: COURSE_NO, COURSE_FEE
+
+<p align="center"><img src="https://user-images.githubusercontent.com/40971097/162012822-cd69c525-628a-45cb-b8d5-f7da08b41f46.png" width="650" height="250">
+
+
 
 #### 1.5.3 3NF
-Based on 2NF, data in a table must only be dependent on the primary key. If the primary key is changed, all data that is impacted must be put into a new table.
+A relation is in third normal form, if there is no transitive dependency for non-prime attributes as well as it is in second normal form.
 
 ### 1.6 Denormalization
 Denormalization is a database optimization technique in which we add redundant data to one or more tables. This can help us avoid costly joins in a relational database. Note that denormalization does not mean not doing normalization. It is an optimization technique that is applied after doing normalization. 
 
-## 2. No-Relational Database
 
-### 2.1 Document Data Store
 
+  
