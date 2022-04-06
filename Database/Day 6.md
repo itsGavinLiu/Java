@@ -1,6 +1,6 @@
 # Day 6
 1. Relational Database
-2. No-Relational Database
+
 
 ## 1. Relational Database
 - A relational database is a collection of data items with pre-defined relationships between them. 
