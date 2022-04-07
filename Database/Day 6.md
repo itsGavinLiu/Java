@@ -126,7 +126,7 @@ Transactions group a set of tasks into a single execution unit. Each transaction
 RDBMSs must exhibit four “ACID” properties:
 
 #### 1.7.1 Atomicity 
-Atomicity means all transactions must succeed or fail completely. They cannot be partially-complete, even in the case of system failure.
+- Atomicity means all transactions must succeed or fail completely. They cannot be partially-complete, even in the case of system failure.
 
 It involves the following two operations. 
 — Abort: If a transaction aborts, changes made to database are not visible. 
@@ -134,10 +134,10 @@ It involves the following two operations.
   
   
 #### 1.7.2 Consistency
-Consistency means that integrity constraints (Domain Constraint, Entity Constraint, Referential Integrity Constraint and Key Constraint) must be maintained so that the database is consistent before and after the transaction. It refers to the correctness of a database.
+- Consistency means that integrity constraints (Domain Constraint, Entity Constraint, Referential Integrity Constraint and Key Constraint) must be maintained so that the database is consistent before and after the transaction. It refers to the correctness of a database.
   
 #### 1.7.3 Isolation  
-Isolation ensures that multiple transactions can occur concurrently without leading to the inconsistency of database state. Transactions occur independently without interference.
+- Isolation ensures that multiple transactions can occur concurrently without leading to the inconsistency of database state. Transactions occur independently without interference.
   
 #### 1.7.4 Durability 
 - Durability means once the transaction has completed execution, the updates and modifications to the database are stored in and written to disk and they persist even if a system failure occurs
