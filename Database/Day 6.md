@@ -129,8 +129,8 @@ RDBMSs must exhibit four “ACID” properties:
 - Atomicity means all transactions must succeed or fail completely. They cannot be partially-complete, even in the case of system failure.
 
 It involves the following two operations. 
-— Abort: If a transaction aborts, changes made to database are not visible. 
-— Commit: If a transaction commits, changes made are visible.   
+- Abort: If a transaction aborts, changes made to database are not visible. 
+- Commit: If a transaction commits, changes made are visible.   
   
   
 #### 1.7.2 Consistency
