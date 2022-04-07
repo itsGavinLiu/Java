@@ -130,9 +130,25 @@ Only two of the following properties can be guaranteed at once.
 
 ## 4. Sharding and Replication
 
-Replication: The primary server node copies data onto secondary server nodes. This can help increase data availability and act as a backup, in case if the primary server fails.
+### 4.1 Replication
+With multiple copies of data on different database servers, replication provides a level of fault tolerance against the loss of a single database server.
 
-Sharding: Handles horizontal scaling across servers using a shard key. This means that rather than copying data holistically, sharding copies pieces of the data (or “shards”) across multiple replica sets. These replica sets work together to utilize all of the data.
+A replica set is a group of mongod instances that maintain the same data set. A replica set contains several data bearing nodes and optionally one arbiter node. Of the data bearing nodes, one and only one member is deemed the primary node, while the other nodes are deemed secondary nodes.
+
+When a primary does not communicate with the other members of the set for more than the configured electionTimeoutMillis period (10 seconds by default), an eligible secondary calls for an election to nominate itself as the new primary. The cluster attempts to complete the election of a new primary and resume normal operations.
+
+- Redundancy: Replication provides redundancy and increases data availability. With multiple copies of data on different database servers, replication provides a level of fault tolerance against the loss of a single database server.
+
+- Failover: The replica set cannot process write operations until the election completes successfully. The replica set can continue to serve read queries if such queries are configured to run on secondaries while the primary is offline.
+
+### 4.2 Sharding
+A method for distributing data across multiple machines. 
+
+There are two methods for addressing system growth: vertical and horizontal scaling.
+
+- Vertical Scaling involves increasing the capacity of a single server, such as using a more powerful CPU, adding more RAM, or increasing the amount of storage space.
+
+- Horizontal Scaling involves dividing the system dataset and load over multiple servers, adding additional servers to increase capacity as required. MongoDB supports horizontal scaling through sharding.
 
 
 
