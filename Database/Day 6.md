@@ -55,12 +55,14 @@ We have the following types of cardinality:
 
 
 ### 1.4 Participation Constraints
+
 In a Relationship, Participation constraint specifies the existence of an entity when it is related to another entity in a relationship type. It is also called minimum cardinality constraint.
 
 - Total Participation: Each entity in the entity set is involved in at least one relationship in a relationship set i.e. the number of relationship in every entity is involved is greater than 0. 
 - Partial Participation: Each entity in entity set may or may not occur in at least one relationship in a relationship set.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/40971097/162010059-aee99bcd-f633-4f61-9e92-a3abaca180fb.png">
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/40971097/162010059-aee99bcd-f633-4f61-9e92-a3abaca180fb.png">
 
 Every student in Student Entity set is participating in relationship but there exists a course C4 which is not taking part in the relationship. 
 
@@ -118,11 +120,26 @@ A relation is in third normal form, if there is no transitive dependency for non
 Denormalization is a database optimization technique in which we add redundant data to one or more tables. This can help us avoid costly joins in a relational database. Note that denormalization does not mean not doing normalization. It is an optimization technique that is applied after doing normalization. 
 
 ### 1.7 ACID Properties
+Transactions group a set of tasks into a single execution unit. Each transaction begins with a specific task and ends when all the tasks in the group successfully complete. Transactions access data using read and write operations. In order to maintain consistency in a database, before and after the transaction, certain properties are followed. These are called ACID properties.   
+  
+  
 RDBMSs must exhibit four “ACID” properties:
 
-- Atomicity means all transactions must succeed or fail completely. They cannot be partially-complete, even in the case of system failure.
-- Consistency means that at each step the database follows invariants: rules which validate and prevent corruption.
-- Isolation prevents concurrent transactions from affecting each other. Transactions must result in the same final state as if they were run sequentially, even if they were run in parallel.
-- Durability makes transactions final. Even system failure cannot roll-back the effects of a successful transaction.
+#### 1.7.1 Atomicity 
+Atomicity means all transactions must succeed or fail completely. They cannot be partially-complete, even in the case of system failure.
+
+It involves the following two operations. 
+— Abort: If a transaction aborts, changes made to database are not visible. 
+— Commit: If a transaction commits, changes made are visible.   
+  
+  
+#### 1.7.2 Consistency
+Consistency means that integrity constraints (Domain Constraint, Entity Constraint, Referential Integrity Constraint and Key Constraint) must be maintained so that the database is consistent before and after the transaction. It refers to the correctness of a database.
+  
+#### 1.7.3 Isolation  
+Isolation ensures that multiple transactions can occur concurrently without leading to the inconsistency of database state. Transactions occur independently without interference.
+  
+#### 1.7.4 Durability 
+- Durability means once the transaction has completed execution, the updates and modifications to the database are stored in and written to disk and they persist even if a system failure occurs
 
   
