@@ -1,6 +1,7 @@
 # Day 7
 2. No-Relational Database
 3. CAP Theorem
+4. Sharing and Replication
 
 
 ## 2. No-Relational Database
@@ -127,7 +128,7 @@ Database with `AP`: Dynamo, Cassandra, SimpleDB, CouchDB
 
 Only two of the following properties can be guaranteed at once.
 
-## 4. Sharding and Replica
+## 4. Sharding and Replication
 
 Replication: The primary server node copies data onto secondary server nodes. This can help increase data availability and act as a backup, in case if the primary server fails.
 
