@@ -150,6 +150,41 @@ There are two methods for addressing system growth: vertical and horizontal scal
 
 - Horizontal Scaling involves dividing the system dataset and load over multiple servers, adding additional servers to increase capacity as required. MongoDB supports horizontal scaling through sharding.
 
+## 5. MongoDB
+- NoSql Database
+- document datastore, which is a data structure composed of field and value pairs
+- Written in C++, supports APIs in many computer languages: java, python, ruby, perl…
+
+### 5.1 Architure
+`mongod` handles data requests, manages data access, and performs background management operations. It is the database instance.
+
+`mongos` collection stores a document for each mongos instance affiliated with the cluster. The mongos instances route queries and write operations to the shards. 
+- analogous to a database router
+- process all the request based on the info from config servers
+- decide how many which mongods should receive the query and which "shard" to send requests
+
+`mongo` provides the interface between the client applications and the sharded cluster. It is a interactive shell.
+
+The "replica set" members are where there is intentional duplication. This is for data redundancy, where if one member goes down then there are other members to carry on the work. 
+
+The role of "shards" is opposite to the "redunancy" of replica sets. Their role is to "distribute" data.
+
+![image](https://user-images.githubusercontent.com/40971097/162334568-9ff8a31c-6d52-4bf6-afb6-4abe25f39c09.png)
+
+Based on the diagram, there are three shardings and each sharding stores partial of all the logic database. Each sharding has three replicas, one primary node and two secondary nodes. 
+
+Mongod represnets each instance of the mongoDB.
+Mongos works like API gateway. When a request comes in, the mongos will check which instance (mongod) should be routed in. 
+Config servers contain all the mete data of all mongods (sharding and replica information). Mongos check config servers and figure out which sharding should handle the request and send request to corresponding sharding.
+
+### 5.2 Functionality of MongoDB
+- dynamic schema
+- document based database
+- secondary indexes (A primary index is an index on a set of fields that includes the unique primary key for the field and is guaranteed not to contain duplicates; A Secondary index is an index that is not a primary index and may have duplicates.)
+- primary-second node with automated failover
+- built in horizontal scaling via automated ranged based partitioning of data(sharding)
+- follows CP
+
 
 
   
