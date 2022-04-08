@@ -14,40 +14,40 @@ meaning that there may be some performance improvements where your application c
 
 ## 1.3 Comparisons
 
-#### Sub-millisecond latency
+### Sub-millisecond latency
 Both Redis and Memcached support sub-millisecond response times. By storing data in-memory they can read data more quickly than disk based databases.
 
-#### Developer ease of use
+### Developer ease of use
 Both Redis and Memcached are syntactically easy to use and require a minimal amount of code to integrate into your application.
 
-#### Data partitioning
+### Data partitioning
 Both Redis and Memcached allow you to distribute your data among multiple nodes. This allows you to scale out to better handle more data when demand grows.
 
-#### Support for a broad set of programming languages
+### Support for a broad set of programming languages
 Both Redis and Memcached have many open-source clients available for developers. Supported languages include Java, Python, PHP, C, C++, C#, JavaScript, Node.js, Ruby, Go and many others.
 
-#### Advanced data structures
+### Advanced data structures
 In addition to strings, Redis supports lists, sets, sorted sets, hashes, bit arrays, and hyperloglogs. Applications can use these more advanced data structures to support a variety of use cases. For example, you can use Redis Sorted Sets to easily implement a game leaderboard that keeps a list of players sorted by their rank.
 
-#### Multithreaded architecture
+### Multithreaded architecture
 Since Memcached is multithreaded, it can make use of multiple processing cores. This means that you can handle more operations by scaling up compute capacity.
 
-#### Snapshots
+### Snapshots
 With Redis you can keep your data on disk with a point in time snapshot which can be used for archiving or recovery.
 
-#### Replication
+### Replication
 Redis lets you create multiple replicas of a Redis primary. This allows you to scale database reads and to have highly available clusters.
 
-#### Transactions
+### Transactions
 Redis supports transactions which let you execute a group of commands as an isolated and atomic operation.
 
-#### Pub/Sub
+### Pub/Sub
 Redis supports Pub/Sub messaging with pattern matching which you can use for high performance chat rooms, real-time comment streams, social media feeds, and server intercommunication.
 
-#### Lua scripting
+### Lua scripting
 Redis allows you to execute transactional Lua scripts. Scripts can help you boost performance and simplify your application.
 
-#### Geospatial support
+### Geospatial support
 Redis has purpose-built commands for working with real-time geospatial data at scale. You can perform operations like finding the distance between two elements (for example people or places) and finding all elements within a given distance of a point.
 
 # 2. Amazon ElastiCache
