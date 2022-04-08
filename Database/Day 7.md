@@ -2,6 +2,8 @@
 2. No-Relational Database
 3. CAP Theorem
 4. Sharing and Replication
+5. MongoDB
+6. Redis
 
 
 ## 2. No-Relational Database
@@ -185,7 +187,7 @@ Config servers contain all the mete data of all mongods (sharding and replica in
 - built in horizontal scaling via automated ranged based partitioning of data(sharding)
 - follows CP
 
-### 5.3 Redis
+## 6. Redis
 Redis (remote directory server) in most situation used as cache.
 
 - in memory (use RAM to store data, which is faster than SSD and Disk but lose dat if lose power)
@@ -199,7 +201,7 @@ Redis (remote directory server) in most situation used as cache.
 
 ![image](https://user-images.githubusercontent.com/40971097/162356092-8eecebf1-2ce5-472a-9486-f393545a9ec3.png)
 
-### 5.4 Redis Cache-Aside
+### 6.1 Redis Cache-Aside
 A cache-aside cache is the most common caching strategy available. The fundamental data retrieval logic can be summarized as follows:
 
 - When your application needs to read data from the database, it checks the cache first to determine whether the data is available.
@@ -208,12 +210,12 @@ A cache-aside cache is the most common caching strategy available. The fundament
 
 - If the data isn’t available (a cache miss), the database is queried for the data. The cache is then populated with the data that is retrieved from the database, and the data is returned to the caller.
 
-### 5.5 Why Redis is Powerful?
+### 6.2 Why Redis is Powerful?
 Because it supports two kinds of persistence mechanisms:
 - RDB (Redis Database) performs point-in-time snapchots of dataset at specific intervals.
 - AOF (Append only file) logs every write opearation received by the server, reconstructing the original dataset.
 
-### 5.6 Reasons for Redis is single-threaded
+### 6.3 Reasons for Redis is single-threaded
 - CPU is not bottleneck: All operations of Redis are memory-based, and CPU is not the bottleneck of Redis. 
 - Concurrency: Parallelism is not the only strategy to support multiple clients. Redis uses `epoll` and event-loop to implement a concurrency strategy and save much time without context switching.
 - Easy to implement: Writing a multi-threaded program can be harder. We need to add locks and sync mechanism for threads.
