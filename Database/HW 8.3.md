@@ -42,6 +42,8 @@ The orchestrator executes saga requests, stores and interprets the states of eac
 ## Two-phase commit (2PC)
 Two-phase commit is a well known pattern in database systems. This pattern can also be used for microservices to implement distributed transactions. In a two-phase commit, there is a controlling node that houses most of the logic and participating nodes (microservices) on which the actions are performed. It works in two phases:
 
+![image](https://user-images.githubusercontent.com/40971097/162554979-9e4e9df9-9677-4f63-bf79-414e45d33c91.png)
+
 - Prepare phase (Phase 1): The controlling node asks all of the participating nodes if they are ready to commit. The participating nodes respond with yes or no.
 - Commit phase (Phase 2): If all of the nodes replied in the affirmative, then the controlling node asks them to commit. Even if one node replies in the negative, the controlling node asks them to roll back.
 
