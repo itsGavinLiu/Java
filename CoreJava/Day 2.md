@@ -62,6 +62,18 @@ The classes which implement the List interface are as follows:
 
 - `Stack` - Stack class models and implements the Stack data structure. The class is based on the basic principle of last-in-first-out. In addition to the basic push and pop operations, the class provides three more functions of empty, search and peek. The class can also be referred to as the subclass of Vector. 
 
+
+|ArrayList	|LinkedList|
+|---|---|
+| ArrayList internally uses a dynamic array to store the elements.	|LinkedList internally uses a doubly linked list to store the elements.|
+|Manipulation with ArrayList is slow because it internally uses an array. If any element is removed from the array, all the other elements are shifted in memory. | Manipulation with LinkedList is faster than ArrayList because it uses a doubly linked list, so no bit shifting is required in memory.|
+| An ArrayList class can act as a list only because it implements List only.	|LinkedList class can act as a list and queue both because it implements List and Deque interfaces.|
+| ArrayList is better for storing and accessing data.	|LinkedList is better for manipulating data.|
+|The memory location for the elements of an ArrayList is contiguous.	|The location for the elements of a linked list is not contagious.|
+|Generally, when an ArrayList is initialized, a default capacity of 10 is assigned to the ArrayList.	|There is no case of default capacity in a LinkedList. In LinkedList, an empty list is created when a LinkedList is initialized.|
+|To be precise, an ArrayList is a resizable array.	|LinkedList implements the doubly linked list of the list interface.|
+
+
 #### 7.4.4  Queue Interface
 As the name suggests, a queue interface maintains the FIFO(First In First Out) order similar to a real-world queue line. This interface is dedicated to storing all the elements where the order of the elements matter. There are various classes like PriorityQueue, ArrayDeque, etc. Since all these subclasses implement the queue, we can instantiate a queue object with any of these classes. For example, 
 ```java
