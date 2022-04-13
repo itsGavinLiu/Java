@@ -1,7 +1,7 @@
 # Day 9
 12. Lock
 13. Distribution Transaction
-14. SQL
+
 
 ## 12. Lock
 Locking is a mechanism used by the SQL Server Database Engine to synchronize access by multiple users to the same piece of data at the same time.
