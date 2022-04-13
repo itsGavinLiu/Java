@@ -58,15 +58,15 @@ A transaction is an action, or a series of actions, carried out by a single user
 
 ACID
 - Atomicity
- - all transactions are atomic
- - can’t be executed partially
- - commit or rollback
+  - all transactions are atomic
+  - can’t be executed partially
+  - commit or rollback
 - Consistency
- - transactions take the database from one consistent state to another state
+  - transactions take the database from one consistent state to another state
 - Isolation
- - a transaction is not visible to other transactions until it completes
+  - a transaction is not visible to other transactions until it completes
 - Durability
- - once a transaction has completed, its changes are made permanent
+  - once a transaction has completed, its changes are made permanent
 
 ## 11. Concurrency
 Three potential problems:
