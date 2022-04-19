@@ -48,10 +48,37 @@ Query objects use SQL or Hibernate Query Language (HQL) string to retrieve data 
 #### 2.2.6 Criteria Object
 Criteria objects are used to create and execute object oriented criteria queries to retrieve objects.
 
-### 2.3 Connect with Database and Setup Hibernate
 
-
-### 2.4 Mapping Examples
+### 2.3 Mapping Examples
 - [Hibernate one to many mapping annotation example](https://howtodoinjava.com/hibernate/hibernate-one-to-many-mapping/)
 - [Hibernate many to many mapping annotation example](https://howtodoinjava.com/hibernate/hibernate-many-to-many-mapping/)
 - [Hibernate One to One Mapping Annotation Example](https://howtodoinjava.com/hibernate/hibernate-one-to-one-mapping/)
+
+### 2.4 HQL
+Hibernate Query Language (HQL) is an easy to learn and powerful query language designed as an object-oriented extension to SQL that bridges the gap between the object-oriented systems and relational databases.
+
+HQL is considered to be the most powerful query language designed as a minimal object-oriented extension to SQL. HQL queries are easy to understand and use persistent class and property names, instead of table and column names. HQL consists of the following elements.
+
+- Clauses (FROM, Select, Where, Order by, Group by)
+- Associations and joins (Inner join, Left outer join, Right outer join, Full join)
+- Aggregate functions (avg, sum, min, max, count, etc.)
+- Expressions (Mathematical operators, Binary comparison, String concatenation, SQL scalar function, etc.)
+- Subqueries (any, all, some, in)
+
+### 2.5 JPA Criteria Queries
+Criteria Queries enable us to write queries without doing raw SQL as well as gives us some object-oriented control over the queries, which is one of the main features of Hibernate. The Criteria API allows us to build up a criteria query object programmatically, where we can apply different kinds of filtration rules and logical conditions.
+
+Following is the simplest example of a criteria query is one, which will simply return every object that corresponds to the Employee class.
+```java
+Criteria cr = session.createCriteria(Employee.class);
+List results = cr.list();
+```
+
+### 2.6 Native SQL
+You can use native SQL to express database queries if you want to utilize database-specific features such as query hints or the CONNECT keyword in Oracle. Hibernate 3.x allows you to specify handwritten SQL, including stored procedures, for all create, update, delete, and load operations.
+
+Your application will create a native SQL query from the session with the createSQLQuery() method on the Session interface
+```java
+public SQLQuery createSQLQuery(String sqlString) throws HibernateException
+```
+After you pass a string containing the SQL query to the createSQLQuery() method, you can associate the SQL result with either an existing Hibernate entity, a join, or a scalar result using addEntity(), addJoin(), and addScalar() methods respectively.
