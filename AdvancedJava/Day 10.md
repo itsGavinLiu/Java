@@ -26,6 +26,12 @@ A JDBC program comprises the following steps
 ### 1.3 Statement vs PreparedStatement vs CallableStatement
 Once a connection is obtained we can interact with the database. The JDBC Statement, CallableStatement, and PreparedStatement interfaces define the methods and properties that enable you to send SQL or PL/SQL commands and receive data from your database.
 
+|Interfaces	|Recommended Use|
+|---|---|
+|Statement	|Use this for general-purpose access to your database. Useful when you are using static SQL statements at runtime. The Statement interface cannot accept parameters.|
+|PreparedStatement	|Use this when you plan to use the SQL statements many times. The PreparedStatement interface accepts input parameters at runtime.|
+|CallableStatement	|Use this when you want to access the database stored procedures. The CallableStatement interface can also accept runtime input parameters.|
+
 #### 1.3.1 Statement
 **Creating Statement Object**
 
