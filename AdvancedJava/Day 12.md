@@ -87,18 +87,18 @@ Successful Response:
 - 204 no content, put, usually update the resources without changing the current page deployed to the user
 
 
-Redirection Message
+Redirection Message:
 - 307 temporary redirect
 - 308 permanent redirect
 
 
-Client Error
+Client Error:
 - 400 bad request, the server could not understand the request due to invalid syntax
 - 401 unauthorized -> unauthenticated, the client is not authenticated
 - 403 forbidden -> no permission
 - 404 not found, the server can not find the requested resources
 
-Server Error
+Server Error:
 - 500 internal server error
 - 501 not implemented, method not supported by the server
 - 502 bad gateway
