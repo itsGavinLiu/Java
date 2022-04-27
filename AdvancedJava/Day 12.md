@@ -43,4 +43,63 @@ The OSI Model we just looked at is just a reference/logical model. It was design
 - Network Access/Link Layer
   - This layer corresponds to the combination of Data Link Layer and Physical Layer of the OSI model. It looks out for hardware addressing and the protocols present in this layer allows for the physical transmission of data.
 
+## 4. HTTP
+HTTP, in full HyperText Transfer Protocol, standard application-level protocol used for exchanging files on the World Wide Web. HTTP runs on top of the TCP/IP protocol and (later) on the QUIC protocol. Web browsers are HTTP clients that send file requests to Web servers, which in turn handle the requests via an HTTP service.
+
+HTTP was invented alongside HTML to create the first interactive, text-based web browser: the original World Wide Web. Today, the protocol remains one of the primary means of using the Internet.
+
+As a request-response protocol, HTTP gives users a way to interact with web resources such as HTML files by transmitting hypertext messages between clients and servers. HTTP clients generally use Transmission Control Protocol (TCP) connections to communicate with servers.
+
+HTTP utilizes specific request methods in order to perform various tasks. All HTTP servers use the GET and HEAD methods, but not all support the rest of these request methods:
+
+- GET requests a specific resource in its entirety
+- HEAD requests a specific resource without the body content
+- POST adds content, messages, or data to a new page under an existing web resource
+- PUT directly modifies an existing web resource or creates a new URI if need be
+- DELETE gets rid of a specified resource
+- TRACE shows users any changes or additions made to a web resource
+- OPTIONS shows users which HTTP methods are available for a specific URL
+- CONNECT converts the request connection to a transparent TCP/IP tunnel
+- PATCH partially modifies a web resource
+
+## 5. HTTP Advanced
+### 5.1 HTTP Request Method
+
+![1651023657(1)](https://user-images.githubusercontent.com/40971097/165421185-9eee4703-d05b-497c-82a3-6eb358132711.png)
+
+`safe`: a http method is safe, if it doesn’t alter the state of the server
+
+`idempotent`: if an identical request is made once or several times, the server will be the same state
+
+`cacheable`: private browser cache; shared proxy cache 
+
+HTTP Status Code: 
+- 1xx information (100 - 199)
+- 2xx success (200 - 299)
+- 3xx redirection (300 - 399)
+- 4xx client  (400 - 499)
+- 5xx server (500 - 599)
+
+Successful Response:
+- 200 OK, get/put/post
+- 201 created, success and new resources has been created, post
+- 202 accepted, request has been received, the process has not been completed
+- 204 no content, put, usually update the resources without changing the current page deployed to the user
+
+
+Redirection Message
+- 307 temporary redirect
+- 308 permanent redirect
+
+
+Client Error
+- 400 bad request, the server could not understand the request due to invalid syntax
+- 401 unauthorized -> unauthenticated, the client is not authenticated
+- 403 forbidden -> no permission
+- 404 not found, the server can not find the requested resources
+
+Server Error
+- 500 internal server error
+- 501 not implemented, method not supported by the server
+- 502 bad gateway
 
